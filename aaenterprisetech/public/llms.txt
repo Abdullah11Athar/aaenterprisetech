@@ -1,0 +1,23 @@
+# AA Enterprise Tech
+
+> Premier Digital Solutions & AI Automation Agency providing custom high-performance web development, autonomous AI workflows, bespoke brand identity systems, and enterprise cloud software architecture.
+
+## Core Services
+
+- [Website Development](https://aaenterprisetech.com/#services): Custom high-performance web apps, Next.js landing pages, and responsive frontend systems.
+- [AI Automation & Chatbots](https://aaenterprisetech.com/#services): Autonomous business workflows, intelligent customer support agents, CRM integrations, and n8n pipelines.
+- [Design & UI/UX Branding](https://aaenterprisetech.com/#services): Modern vector logos, Figma design systems, brand guidelines, and high-converting visual assets.
+- [IT & Cloud Architecture](https://aaenterprisetech.com/#services): Scalable cloud infrastructure, secure REST and GraphQL API engineering, Stripe payment integration, and 24/7 technical support.
+
+## Actions & Contact
+
+- [Instant Quote Estimator](https://aaenterprisetech.com/#calculator): Interactive project cost calculator to estimate custom investment for software, AI, and design services.
+- [Send Project Inquiry](https://aaenterprisetech.com/#contact): Submit project details directly to the engineering team for a guaranteed proposal within 24 hours.
+- [Client Payment Portal](https://aaenterprisetech.com/pay): Secure encrypted client payment gateway for verified invoices and active contracts.
+
+## Optional
+
+- [Privacy Policy](https://aaenterprisetech.com/privacy): Data protection, user rights, and privacy practices.
+- [Terms of Service](https://aaenterprisetech.com/terms): Service terms, client deliverables, and agreements.
+- [Refund Policy](https://aaenterprisetech.com/refund): Guarantee policies and milestone refund conditions.
+- [Security Disclosures](https://aaenterprisetech.com/security): Security standards, HTTPS encryption, and data protection measures.
