@@ -15,11 +15,10 @@ export default function AAEnterpriseTechHomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
   const [highlightedSection, setHighlightedSection] = useState<string | null>(null);
   
-  // Ambient Cursor Color Glow Follower
+  // Ambient Cursor Color Glow Follower (Soft, Refined Diameter)
   const [mousePos, setMousePos] = useState({ x: -600, y: -600 });
   
   const isManualScrolling = useRef(false);
@@ -31,11 +30,6 @@ export default function AAEnterpriseTechHomePage() {
     };
 
     const handleScroll = () => {
-      // Calculate scroll progress percentage
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
-      setScrollProgress(progress);
-
       if (window.scrollY > 40) {
         setScrolled(true);
       } else {
@@ -58,8 +52,8 @@ export default function AAEnterpriseTechHomePage() {
       }
     };
 
-    // Intersection Observer for smooth scroll-reveal animations
-    const observerCallback: IntersectionObserverCallback = (entries, observer) => {
+    // Intersection Observer for smooth, prominent scroll-reveal animations
+    const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
@@ -69,8 +63,8 @@ export default function AAEnterpriseTechHomePage() {
 
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px -30px 0px'
     });
 
     const revealElements = document.querySelectorAll('.scroll-reveal');
@@ -222,17 +216,11 @@ export default function AAEnterpriseTechHomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 selection:bg-purple-500 selection:text-white antialiased overflow-x-hidden relative">
 
-      {/* 🚀 Dynamic Glowing Scroll Progress Bar */}
+      {/* 🌟 Interactive Mouse Move Ambient Light Spotlight (Soft, Refined Diameter) */}
       <div
-        className="fixed top-0 left-0 h-[3.5px] bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 z-[9999] transition-all duration-75 ease-out shadow-[0_0_14px_#c084fc]"
-        style={{ width: `${scrollProgress}%` }}
-      />
-
-      {/* 🌟 Interactive Mouse Move Ambient Light Spotlight */}
-      <div
-        className="fixed w-[550px] h-[550px] rounded-full bg-gradient-to-r from-purple-600/20 via-indigo-500/15 to-blue-500/10 blur-[110px] pointer-events-none z-0 transition-transform duration-100 ease-out hidden md:block"
+        className="fixed w-[320px] h-[320px] rounded-full bg-gradient-to-r from-purple-500/12 via-indigo-400/08 to-transparent blur-[70px] pointer-events-none z-0 transition-transform duration-75 ease-out hidden md:block"
         style={{
-          transform: `translate(${mousePos.x - 275}px, ${mousePos.y - 275}px)`,
+          transform: `translate(${mousePos.x - 160}px, ${mousePos.y - 160}px)`,
         }}
       />
 
