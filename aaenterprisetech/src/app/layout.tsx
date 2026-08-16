@@ -30,17 +30,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg?v=2', type: 'image/svg+xml' },
-      { url: '/favicon.png?v=2', type: 'image/png', sizes: '512x512' },
-      { url: '/icon.png?v=2', type: 'image/png', sizes: '512x512' },
-      { url: '/favicon.ico?v=2', sizes: 'any' },
+      { url: '/favicon.svg?v=4', type: 'image/svg+xml' },
+      { url: '/favicon.png?v=4', type: 'image/png', sizes: '512x512' },
+      { url: '/icon.png?v=4', type: 'image/png', sizes: '512x512' },
+      { url: '/favicon.ico?v=4', sizes: 'any' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png?v=2', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png?v=4', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/favicon.png?v=2',
+    shortcut: '/favicon.png?v=4',
   },
-  manifest: '/site.webmanifest?v=2',
+  manifest: '/site.webmanifest?v=4',
   alternates: {
     canonical: 'https://aaenterprisetech.com',
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'AA Enterprise Tech',
     images: [
       {
-        url: 'https://aaenterprisetech.com/og-image.png?v=2',
+        url: 'https://aaenterprisetech.com/og-image.png?v=4',
         width: 1200,
         height: 630,
         alt: 'AA Enterprise Tech - Digital Solutions & AI Automation Agency',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AA Enterprise Tech - Digital Solutions & AI Agency',
     description: 'Modern tech, automated AI workflows, and bespoke web solutions for global businesses.',
-    images: ['https://aaenterprisetech.com/og-image.png?v=2'],
+    images: ['https://aaenterprisetech.com/og-image.png?v=4'],
   },
   robots: {
     index: true,

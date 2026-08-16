@@ -21,14 +21,7 @@ export default function AAEnterpriseTechHomePage() {
   const isManualScrolling = useRef(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Interactive Cursor Light Spotlight
-  const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
-
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
     const handleScroll = () => {
       if (window.scrollY > 40) {
         setScrolled(true);
@@ -52,10 +45,8 @@ export default function AAEnterpriseTechHomePage() {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -192,25 +183,7 @@ export default function AAEnterpriseTechHomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 selection:bg-purple-500 selection:text-white antialiased overflow-x-hidden relative">
-      {/* 🌟 Custom Glowing Cursor Dot & Halo Follower */}
-      <div
-        className="fixed w-2.5 h-2.5 rounded-full bg-purple-400 pointer-events-none z-[9999] shadow-[0_0_14px_#c084fc] hidden md:block transition-transform duration-75 ease-out"
-        style={{
-          transform: `translate(${mousePos.x - 5}px, ${mousePos.y - 5}px)`,
-        }}
-      />
-      <div
-        className="fixed w-9 h-9 rounded-full border border-purple-400/50 bg-purple-500/5 pointer-events-none z-[9998] shadow-[0_0_20px_rgba(168,85,247,0.3)] hidden md:block transition-all duration-150 ease-out"
-        style={{
-          transform: `translate(${mousePos.x - 18}px, ${mousePos.y - 18}px)`,
-        }}
-      />
-      <div
-        className="fixed w-[380px] h-[380px] rounded-full bg-gradient-to-r from-purple-600/25 via-indigo-500/20 to-blue-500/15 blur-[90px] pointer-events-none z-0 transition-transform duration-100 ease-out hidden md:block"
-        style={{
-          transform: `translate(${mousePos.x - 190}px, ${mousePos.y - 190}px)`,
-        }}
-      />
+
 
       {/* Dynamic Background Glows */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
