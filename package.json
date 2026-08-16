@@ -1,0 +1,10 @@
+{
+  "name": "aaenterprisetech-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd aaenterprisetech && npm run dev",
+    "build": "cd aaenterprisetech && npm run build",
+    "start": "cd aaenterprisetech && npm run start"
+  }
+}

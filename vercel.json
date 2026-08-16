@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd aaenterprisetech && npm install && npm run build",
+  "outputDirectory": "aaenterprisetech/.next",
+  "framework": "nextjs"
+}
