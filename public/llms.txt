@@ -1,0 +1,45 @@
+# AA Enterprise Tech
+> Premier Digital Solutions & AI Automation Agency helping businesses accelerate growth with modern technology, custom websites, automated workflows, and brand identity design.
+
+## Organization Details
+- **Name**: AA Enterprise Tech
+- **Website**: https://aaenterprisetech.com
+- **Contact Email**: info@aaenterprisetech.com
+- **Direct Business Line**: +1 (314) 834-0021
+- **Headquarters**: Creve Coeur, Missouri, USA & Worldwide Remote Services
+- **Founder**: Abdullah Athar
+
+## Core Services & Capabilities
+
+### 1. Website Development
+- Custom Business Websites
+- High-Converting Landing Pages
+- Next.js / React Web Applications
+- E-commerce Stores & Client Portals
+- Typical Investment: $800 - $3,500 USD
+
+### 2. AI Automation & Workflows
+- Automated Business Workflows (n8n, Make, Zapier)
+- Custom AI Conversational Chatbots & Support Agents
+- CRM & Lead Nurturing Automations
+- API System Integrations
+- Typical Investment: $1,200 - $5,000 USD
+
+### 3. Design & Branding
+- Logo Design & Vector Identity
+- Brand Guidelines & Typography Standards
+- UI/UX Interface Design (Figma)
+- Social Media Kits & Pitch Decks
+- Typical Investment: $500 - $1,500 USD
+
+### 4. IT & Software Services
+- Technical Consulting & Cloud Architecture
+- Custom API Development & Webhooks
+- Server & Database Management
+- Ongoing Maintenance & SLA Support
+- Typical Investment: $900 - $4,000 USD
+
+## Interactive Inquiry Endpoint
+- **Action**: Direct inquiry submission via contact form at https://aaenterprisetech.com/#contact
+- **Parameters**: `name` (string), `email` (valid email), `details` (project scope text)
+- **Response SLA**: Response within 24 business hours
