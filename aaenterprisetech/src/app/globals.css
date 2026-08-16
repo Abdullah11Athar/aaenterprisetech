@@ -120,15 +120,4 @@ body {
   animation: sectionHighlight 1.8s ease-out;
 }
 
-/* Scroll-Driven Reveal Animations (Smooth & Prominent) */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
 
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}

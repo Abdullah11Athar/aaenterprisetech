@@ -52,24 +52,6 @@ export default function AAEnterpriseTechHomePage() {
       }
     };
 
-    // Intersection Observer for smooth, prominent scroll-reveal animations
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, {
-      root: null,
-      threshold: 0.05,
-      rootMargin: '0px 0px -30px 0px'
-    });
-
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    revealElements.forEach((el) => observer.observe(el));
-
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll, { passive: true });
     
@@ -79,7 +61,6 @@ export default function AAEnterpriseTechHomePage() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
     };
   }, []);
 
