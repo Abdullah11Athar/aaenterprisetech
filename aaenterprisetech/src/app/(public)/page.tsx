@@ -15,14 +15,27 @@ export default function AAEnterpriseTechHomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
   const [highlightedSection, setHighlightedSection] = useState<string | null>(null);
+  
+  // Ambient Cursor Color Glow Follower
+  const [mousePos, setMousePos] = useState({ x: -600, y: -600 });
   
   const isManualScrolling = useRef(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
     const handleScroll = () => {
+      // Calculate scroll progress percentage
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0;
+      setScrollProgress(progress);
+
       if (window.scrollY > 40) {
         setScrolled(true);
       } else {
@@ -45,9 +58,34 @@ export default function AAEnterpriseTechHomePage() {
       }
     };
 
+    // Intersection Observer for smooth scroll-reveal animations
+    const observerCallback: IntersectionObserverCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    revealElements.forEach((el) => observer.observe(el));
+
+    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial run
+    handleScroll();
+
     return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
     };
   }, []);
 
@@ -184,6 +222,19 @@ export default function AAEnterpriseTechHomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 selection:bg-purple-500 selection:text-white antialiased overflow-x-hidden relative">
 
+      {/* 🚀 Dynamic Glowing Scroll Progress Bar */}
+      <div
+        className="fixed top-0 left-0 h-[3.5px] bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 z-[9999] transition-all duration-75 ease-out shadow-[0_0_14px_#c084fc]"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
+      {/* 🌟 Interactive Mouse Move Ambient Light Spotlight */}
+      <div
+        className="fixed w-[550px] h-[550px] rounded-full bg-gradient-to-r from-purple-600/20 via-indigo-500/15 to-blue-500/10 blur-[110px] pointer-events-none z-0 transition-transform duration-100 ease-out hidden md:block"
+        style={{
+          transform: `translate(${mousePos.x - 275}px, ${mousePos.y - 275}px)`,
+        }}
+      />
 
       {/* Dynamic Background Glows */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -375,7 +426,7 @@ export default function AAEnterpriseTechHomePage() {
             </div>
 
             {/* Glowing Metrics Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80 scroll-reveal">
               <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
                 <div className="text-xl sm:text-2xl font-black text-purple-300">100%</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Client Satisfaction</div>
@@ -397,7 +448,7 @@ export default function AAEnterpriseTechHomePage() {
         </section>
 
         {/* Tech Stack Marquee */}
-        <section className="py-6 border-y border-slate-800/80 bg-slate-950/60 overflow-hidden relative z-10">
+        <section className="py-6 border-y border-slate-800/80 bg-slate-950/60 overflow-hidden relative z-10 scroll-reveal">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs sm:text-sm font-semibold text-slate-200">
             <span className="text-slate-300 uppercase tracking-widest text-[11px] font-bold">Powered By Modern Tech:</span>
             <span className="flex items-center gap-1.5 text-slate-100"><Code2 className="w-4 h-4 text-purple-300" /> Next.js 14</span>
@@ -411,7 +462,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Services Showcase */}
         <section
           id="services"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-b border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/40 border-b border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
             highlightedSection === 'services' ? 'section-highlight' : ''
           }`}
         >
@@ -458,7 +509,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* 4-Step Process Section */}
         <section
           id="process"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
             highlightedSection === 'process' ? 'section-highlight' : ''
           }`}
         >
@@ -492,7 +543,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Why Choose Us */}
         <section
           id="why-us"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
             highlightedSection === 'why-us' ? 'section-highlight' : ''
           }`}
         >
@@ -569,7 +620,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Interactive Project Quote Estimator */}
         <section
           id="calculator"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
@@ -621,7 +672,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-t border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/40 border-t border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
@@ -657,7 +708,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`py-16 sm:py-24 bg-slate-950 border-t border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-950 border-t border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >

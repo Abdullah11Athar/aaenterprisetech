@@ -112,10 +112,23 @@ body {
 /* Section Flash Highlight on Click */
 @keyframes sectionHighlight {
   0% { box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4); }
-  50% { box-shadow: 0 0 50px 10px rgba(147, 51, 234, 0.3); }
+  50% { box-shadow: 0 0 50px 10px rgba(147, 51, 234, 0.3); border-color: rgba(168, 85, 247, 0.8); }
   100% { box-shadow: 0 0 0 0 rgba(147, 51, 234, 0); }
 }
 
 .section-highlight {
-  animation: sectionHighlight 1.5s ease-out;
+  animation: sectionHighlight 1.8s ease-out;
+}
+
+/* Scroll-Driven Reveal Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
