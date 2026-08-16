@@ -197,11 +197,11 @@ export default function AAEnterpriseTechHomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 selection:bg-purple-500 selection:text-white antialiased overflow-x-hidden relative">
 
-      {/* 🌟 Interactive Mouse Move Ambient Light Spotlight (Soft, Refined Diameter) */}
+      {/* 🌟 Interactive Mouse Move Ambient Light Spotlight (Visible Overlay Glow) */}
       <div
-        className="fixed w-[320px] h-[320px] rounded-full bg-gradient-to-r from-purple-500/12 via-indigo-400/08 to-transparent blur-[70px] pointer-events-none z-0 transition-transform duration-75 ease-out hidden md:block"
+        className="fixed w-[380px] h-[380px] rounded-full bg-gradient-to-r from-purple-500/30 via-indigo-500/20 to-blue-400/10 blur-[65px] pointer-events-none z-30 opacity-70 mix-blend-screen transition-transform duration-75 ease-out hidden md:block"
         style={{
-          transform: `translate(${mousePos.x - 160}px, ${mousePos.y - 160}px)`,
+          transform: `translate(${mousePos.x - 190}px, ${mousePos.y - 190}px)`,
         }}
       />
 
@@ -360,6 +360,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Hero Section with Shimmering Headline & Ambient Lights */}
         <section className="relative pt-28 sm:pt-36 md:pt-44 pb-16 sm:pb-24 overflow-hidden px-4 sm:px-6 z-10">
           <div className="max-w-5xl mx-auto text-center relative z-10">
+            {/* Top Floating Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-950/70 border border-purple-500/50 text-xs font-bold text-purple-200 mb-6 sm:mb-8 shadow-lg shadow-purple-950/40 animate-float">
               <Sparkles className="w-4 h-4 text-purple-300 shrink-0" />
               <span>Next-Generation Digital Solutions & AI Engineering</span>
@@ -394,21 +395,21 @@ export default function AAEnterpriseTechHomePage() {
               </a>
             </div>
 
-            {/* Glowing Metrics Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80 scroll-reveal">
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
+            {/* Glowing Metrics Bar with Float Animation */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float">
                 <div className="text-xl sm:text-2xl font-black text-purple-300">100%</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Client Satisfaction</div>
               </div>
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float-delayed">
                 <div className="text-xl sm:text-2xl font-black text-indigo-300">5-7 Days</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Average Turnaround</div>
               </div>
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float">
                 <div className="text-xl sm:text-2xl font-black text-blue-300">20+ Hrs</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">AI Weekly Time Saved</div>
               </div>
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float-delayed">
                 <div className="text-xl sm:text-2xl font-black text-emerald-300">24/7</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Priority Support</div>
               </div>
@@ -416,15 +417,20 @@ export default function AAEnterpriseTechHomePage() {
           </div>
         </section>
 
-        {/* Tech Stack Marquee */}
-        <section className="py-6 border-y border-slate-800/80 bg-slate-950/60 overflow-hidden relative z-10 scroll-reveal">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs sm:text-sm font-semibold text-slate-200">
-            <span className="text-slate-300 uppercase tracking-widest text-[11px] font-bold">Powered By Modern Tech:</span>
-            <span className="flex items-center gap-1.5 text-slate-100"><Code2 className="w-4 h-4 text-purple-300" /> Next.js 14</span>
-            <span className="flex items-center gap-1.5 text-slate-100"><Bot className="w-4 h-4 text-blue-300" /> OpenAI & Claude</span>
-            <span className="flex items-center gap-1.5 text-slate-100"><Zap className="w-4 h-4 text-amber-300" /> n8n Automation</span>
-            <span className="flex items-center gap-1.5 text-slate-100"><Globe className="w-4 h-4 text-indigo-300" /> Stripe Payments</span>
-            <span className="flex items-center gap-1.5 text-slate-100"><Cpu className="w-4 h-4 text-emerald-300" /> Vercel Cloud</span>
+        {/* Infinite Moving Tech Stack Marquee */}
+        <section className="py-5 border-y border-slate-800/80 bg-slate-950/80 overflow-hidden relative z-10">
+          <div className="flex animate-marquee gap-8 sm:gap-12 whitespace-nowrap text-xs sm:text-sm font-semibold text-slate-200">
+            <span className="text-slate-400 uppercase tracking-widest text-[11px] font-bold flex items-center">⚡ Core Technologies:</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Code2 className="w-4 h-4 text-purple-400" /> Next.js 14 & React</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Bot className="w-4 h-4 text-blue-400" /> OpenAI & Claude AI</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Zap className="w-4 h-4 text-amber-400" /> n8n Automation</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Globe className="w-4 h-4 text-indigo-400" /> Stripe Payments</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Cpu className="w-4 h-4 text-emerald-400" /> Vercel Cloud</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Code2 className="w-4 h-4 text-purple-400" /> Next.js 14 & React</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Bot className="w-4 h-4 text-blue-400" /> OpenAI & Claude AI</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Zap className="w-4 h-4 text-amber-400" /> n8n Automation</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Globe className="w-4 h-4 text-indigo-400" /> Stripe Payments</span>
+            <span className="flex items-center gap-2 text-white bg-slate-900/90 px-4 py-1.5 rounded-xl border border-slate-800"><Cpu className="w-4 h-4 text-emerald-400" /> Vercel Cloud</span>
           </div>
         </section>
 
