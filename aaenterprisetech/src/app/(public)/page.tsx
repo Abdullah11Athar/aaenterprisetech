@@ -404,20 +404,20 @@ export default function AAEnterpriseTechHomePage() {
             {/* Glowing Metrics Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80">
               <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
-                <div className="text-xl sm:text-2xl font-black text-purple-400">100%</div>
-                <div className="text-[11px] sm:text-xs text-slate-300 font-medium mt-0.5">Client Satisfaction</div>
+                <div className="text-xl sm:text-2xl font-black text-purple-300">100%</div>
+                <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Client Satisfaction</div>
               </div>
               <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
-                <div className="text-xl sm:text-2xl font-black text-indigo-400">5-7 Days</div>
-                <div className="text-[11px] sm:text-xs text-slate-300 font-medium mt-0.5">Average Turnaround</div>
+                <div className="text-xl sm:text-2xl font-black text-indigo-300">5-7 Days</div>
+                <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Average Turnaround</div>
               </div>
               <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
-                <div className="text-xl sm:text-2xl font-black text-blue-400">20+ Hrs</div>
-                <div className="text-[11px] sm:text-xs text-slate-300 font-medium mt-0.5">AI Weekly Time Saved</div>
+                <div className="text-xl sm:text-2xl font-black text-blue-300">20+ Hrs</div>
+                <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">AI Weekly Time Saved</div>
               </div>
               <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-transform">
-                <div className="text-xl sm:text-2xl font-black text-emerald-400">24/7</div>
-                <div className="text-[11px] sm:text-xs text-slate-300 font-medium mt-0.5">Priority Support</div>
+                <div className="text-xl sm:text-2xl font-black text-emerald-300">24/7</div>
+                <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Priority Support</div>
               </div>
             </div>
           </div>
@@ -425,13 +425,13 @@ export default function AAEnterpriseTechHomePage() {
 
         {/* Tech Stack Marquee */}
         <section className="py-6 border-y border-slate-800/80 bg-slate-950/60 overflow-hidden relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs sm:text-sm font-semibold text-slate-300">
-            <span className="text-slate-400 uppercase tracking-widest text-[11px] font-bold">Powered By Modern Tech:</span>
-            <span className="flex items-center gap-1.5 text-slate-200"><Code2 className="w-4 h-4 text-purple-400" /> Next.js 14</span>
-            <span className="flex items-center gap-1.5 text-slate-200"><Bot className="w-4 h-4 text-blue-400" /> OpenAI & Claude</span>
-            <span className="flex items-center gap-1.5 text-slate-200"><Zap className="w-4 h-4 text-amber-400" /> n8n Automation</span>
-            <span className="flex items-center gap-1.5 text-slate-200"><Globe className="w-4 h-4 text-indigo-400" /> Stripe Payments</span>
-            <span className="flex items-center gap-1.5 text-slate-200"><Cpu className="w-4 h-4 text-emerald-400" /> Vercel Cloud</span>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs sm:text-sm font-semibold text-slate-200">
+            <span className="text-slate-300 uppercase tracking-widest text-[11px] font-bold">Powered By Modern Tech:</span>
+            <span className="flex items-center gap-1.5 text-slate-100"><Code2 className="w-4 h-4 text-purple-300" /> Next.js 14</span>
+            <span className="flex items-center gap-1.5 text-slate-100"><Bot className="w-4 h-4 text-blue-300" /> OpenAI & Claude</span>
+            <span className="flex items-center gap-1.5 text-slate-100"><Zap className="w-4 h-4 text-amber-300" /> n8n Automation</span>
+            <span className="flex items-center gap-1.5 text-slate-100"><Globe className="w-4 h-4 text-indigo-300" /> Stripe Payments</span>
+            <span className="flex items-center gap-1.5 text-slate-100"><Cpu className="w-4 h-4 text-emerald-300" /> Vercel Cloud</span>
           </div>
         </section>
 
@@ -446,7 +446,7 @@ export default function AAEnterpriseTechHomePage() {
             <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Our Expertise</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Comprehensive Digital Solutions</h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-2 sm:mt-3">Tailored services engineered to deliver real-world business results.</p>
+              <p className="text-xs sm:text-sm text-slate-200 mt-2 sm:mt-3">Tailored services engineered to deliver real-world business results.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -462,15 +462,15 @@ export default function AAEnterpriseTechHomePage() {
                         <IconComp className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                       </div>
                       <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{svc.category}</h3>
-                      <p className="text-xs sm:text-sm text-slate-200 mb-3 font-medium">{svc.name}</p>
-                      <p className="text-xs text-slate-300 leading-relaxed mb-4">{svc.desc}</p>
+                      <p className="text-xs sm:text-sm text-slate-100 mb-3 font-semibold">{svc.name}</p>
+                      <p className="text-xs text-slate-200 leading-relaxed mb-4">{svc.desc}</p>
                     </div>
                     <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
                       <span className="text-xs font-bold text-purple-300">From ${svc.price} USD</span>
                       <a
                         href="#contact"
                         onClick={(e) => scrollToSection(e, 'contact')}
-                        className="text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                        className="text-xs font-semibold text-slate-200 hover:text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                       >
                         Inquire <ArrowRight className="w-3 h-3" />
                       </a>
@@ -493,7 +493,7 @@ export default function AAEnterpriseTechHomePage() {
             <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Streamlined Workflow</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">How We Bring Your Vision To Life</h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-2 sm:mt-3">A transparent, agile process designed for rapid execution and flawless delivery.</p>
+              <p className="text-xs sm:text-sm text-slate-200 mt-2 sm:mt-3">A transparent, agile process designed for rapid execution and flawless delivery.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -501,14 +501,14 @@ export default function AAEnterpriseTechHomePage() {
                 const StepIcon = s.icon;
                 return (
                   <div key={idx} className="p-6 rounded-2xl glass-card border border-slate-800 hover:border-purple-500/50 transition-all relative group hover:-translate-y-1">
-                    <div className="text-3xl font-black text-slate-700 group-hover:text-purple-400/60 transition-colors mb-3">
+                    <div aria-hidden="true" className="text-3xl font-black text-slate-500 group-hover:text-purple-300 transition-colors mb-3">
                       {s.step}
                     </div>
-                    <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-300 flex items-center justify-center mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center mb-3">
                       <StepIcon className="w-5 h-5" />
                     </div>
                     <h3 className="font-bold text-white text-base mb-1.5">{s.title}</h3>
-                    <p className="text-xs text-slate-300 leading-relaxed">{s.desc}</p>
+                    <p className="text-xs text-slate-200 leading-relaxed">{s.desc}</p>
                   </div>
                 );
               })}
@@ -531,62 +531,62 @@ export default function AAEnterpriseTechHomePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 text-purple-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center shrink-0">
                   <Star className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white text-base sm:text-lg mb-1">Professional Quality</h3>
-                  <p className="text-xs sm:text-sm text-slate-300">Enterprise-grade standards across code, visual design, and software reliability.</p>
+                  <p className="text-xs sm:text-sm text-slate-200">Enterprise-grade standards across code, visual design, and software reliability.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/10 text-indigo-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/20 text-indigo-200 flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white text-base sm:text-lg mb-1">Fast Turnaround</h3>
-                  <p className="text-xs sm:text-sm text-slate-300">Agile sprints and rapid delivery to help you launch ahead of competitors.</p>
+                  <p className="text-xs sm:text-sm text-slate-200">Agile sprints and rapid delivery to help you launch ahead of competitors.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 text-blue-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/20 text-blue-200 flex items-center justify-center shrink-0">
                   <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white text-base sm:text-lg mb-1">Custom Solutions</h3>
-                  <p className="text-xs sm:text-sm text-slate-300">Tailored software stacks and workflows engineered for your exact business goals.</p>
+                  <p className="text-xs sm:text-sm text-slate-200">Tailored software stacks and workflows engineered for your exact business goals.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/10 text-emerald-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/20 text-emerald-200 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white text-base sm:text-lg mb-1">Secure & Reliable</h3>
-                  <p className="text-xs sm:text-sm text-slate-300">Bank-grade SSL encryption, secure API protocols, and robust infrastructure.</p>
+                  <p className="text-xs sm:text-sm text-slate-200">Bank-grade SSL encryption, secure API protocols, and robust infrastructure.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-pink-500/10 text-pink-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-pink-500/20 text-pink-200 flex items-center justify-center shrink-0">
                   <Globe className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white text-base sm:text-lg mb-1">Worldwide Remote Service</h3>
-                  <p className="text-xs sm:text-sm text-slate-300">Serving enterprise clients, startups, and founders across the USA, UK, UAE, and worldwide.</p>
+                  <p className="text-xs sm:text-sm text-slate-200">Serving enterprise clients, startups, and founders across the USA, UK, UAE, and worldwide.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-500/10 text-amber-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-500/20 text-amber-200 flex items-center justify-center shrink-0">
                   <Headphones className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white text-base sm:text-lg mb-1">Dedicated Support</h3>
-                  <p className="text-xs sm:text-sm text-slate-300">Direct communication via Slack/WhatsApp and responsive post-launch maintenance.</p>
+                  <p className="text-xs sm:text-sm text-slate-200">Direct communication via Slack/WhatsApp and responsive post-launch maintenance.</p>
                 </div>
               </div>
             </div>
@@ -601,9 +601,9 @@ export default function AAEnterpriseTechHomePage() {
           }`}
         >
           <div className="max-w-4xl mx-auto">
-            <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900/80 border border-purple-500/40 text-center relative overflow-hidden shadow-2xl shadow-purple-950/40">
+            <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-purple-500/40 text-center relative overflow-hidden shadow-2xl shadow-purple-950/40">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">Instant Project Quote Estimator</h2>
-              <p className="text-xs sm:text-sm text-slate-300 mb-6 sm:mb-8">Select the services you need for an instant estimated investment figure.</p>
+              <p className="text-xs sm:text-sm text-slate-200 mb-6 sm:mb-8">Select the services you need for an instant estimated investment figure.</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 text-left mb-6 sm:mb-8">
                 {servicesList.map((svc) => {
@@ -614,8 +614,8 @@ export default function AAEnterpriseTechHomePage() {
                       onClick={() => toggleService(svc.id, svc.price)}
                       className={`p-4 sm:p-5 rounded-2xl border cursor-pointer transition-all ${
                         isSelected
-                          ? 'bg-purple-950/60 border-purple-500 text-white shadow-md shadow-purple-500/20 scale-[1.01]'
-                          : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:border-slate-700'
+                          ? 'bg-purple-950/80 border-purple-400 text-white shadow-md shadow-purple-500/20 scale-[1.01]'
+                          : 'bg-slate-900/95 border-slate-800 text-slate-200 hover:border-slate-700'
                       }`}
                     >
                       <div className="flex justify-between items-center mb-1">
@@ -628,9 +628,9 @@ export default function AAEnterpriseTechHomePage() {
                 })}
               </div>
 
-              <div className="p-5 sm:p-6 rounded-2xl bg-purple-950/50 border border-purple-500/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="p-5 sm:p-6 rounded-2xl bg-purple-950/70 border border-purple-500/40 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-center sm:text-left">
-                  <span className="text-[10px] sm:text-xs text-purple-300 font-semibold uppercase tracking-wider">Estimated Project Total</span>
+                  <span className="text-[10px] sm:text-xs text-purple-200 font-semibold uppercase tracking-wider">Estimated Project Total</span>
                   <div className="text-2xl sm:text-3xl font-black text-white">${estimatedTotal} USD</div>
                 </div>
                 <a
@@ -705,7 +705,7 @@ export default function AAEnterpriseTechHomePage() {
                     href="tel:+13148340021"
                     className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl glass-card border border-slate-800 hover:border-purple-500/50 transition-all group"
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 text-purple-300 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
                       <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
@@ -718,7 +718,7 @@ export default function AAEnterpriseTechHomePage() {
                     href="mailto:info@aaenterprisetech.com"
                     className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl glass-card border border-slate-800 hover:border-indigo-500/50 transition-all group"
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/10 text-indigo-300 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
                       <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
@@ -728,7 +728,7 @@ export default function AAEnterpriseTechHomePage() {
                   </a>
 
                   <div className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl glass-card border border-slate-800">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 text-blue-300 flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center shrink-0">
                       <Globe className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
@@ -743,21 +743,21 @@ export default function AAEnterpriseTechHomePage() {
               <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 flex flex-col justify-between shadow-xl">
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold text-white mb-1">Send Us Your Inquiry</h3>
-                  <p className="text-xs text-slate-300 mb-4">Fill in your requirements below for a fixed-price proposal.</p>
+                  <p className="text-xs text-slate-200 mb-4">Fill in your requirements below for a fixed-price proposal.</p>
                 </div>
 
                 <form onSubmit={handleFormSubmit} className="space-y-3.5 sm:space-y-4">
                   <div>
-                    <label htmlFor="full-name" className="block text-xs font-semibold text-slate-300 mb-1">Your Full Name</label>
-                    <input id="full-name" name="full-name" required maxLength={100} type="text" placeholder="John Doe" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
+                    <label htmlFor="full-name" className="block text-xs font-semibold text-slate-200 mb-1">Your Full Name</label>
+                    <input id="full-name" name="full-name" required maxLength={100} type="text" placeholder="John Doe" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400" />
                   </div>
                   <div>
-                    <label htmlFor="email-address" className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-                    <input id="email-address" name="email" required maxLength={100} type="email" placeholder="john@company.com" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
+                    <label htmlFor="email-address" className="block text-xs font-semibold text-slate-200 mb-1">Email Address</label>
+                    <input id="email-address" name="email" required maxLength={100} type="email" placeholder="john@company.com" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400" />
                   </div>
                   <div>
-                    <label htmlFor="project-details" className="block text-xs font-semibold text-slate-300 mb-1">Project Details / Requirements</label>
-                    <textarea id="project-details" name="message" required maxLength={2000} rows={4} placeholder="Describe your website, AI automation, branding, or custom software requirements..." className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
+                    <label htmlFor="project-details" className="block text-xs font-semibold text-slate-200 mb-1">Project Details / Requirements</label>
+                    <textarea id="project-details" name="message" required maxLength={2000} rows={4} placeholder="Describe your website, AI automation, branding, or custom software requirements..." className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400" />
                   </div>
                   <button type="submit" aria-label="Submit Contact Inquiry" className="w-full py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02]">
                     <Send className="w-4 h-4" /> Send Inquiry
@@ -776,7 +776,7 @@ export default function AAEnterpriseTechHomePage() {
       </main>
 
       {/* Footer with Legal & Portal Links */}
-      <footer className="border-t border-slate-800/80 py-10 sm:py-14 bg-slate-950 text-slate-300 text-xs sm:text-sm px-4 sm:px-6 relative z-10">
+      <footer className="border-t border-slate-800/80 py-10 sm:py-14 bg-slate-950 text-slate-200 text-xs sm:text-sm px-4 sm:px-6 relative z-10">
         <div className="max-w-7xl mx-auto space-y-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <Link
@@ -792,27 +792,27 @@ export default function AAEnterpriseTechHomePage() {
               </div>
               <div>
                 <span className="font-bold text-white group-hover:text-purple-300 transition-colors">AA Enterprise Tech</span>
-                <span className="block text-[10px] sm:text-[11px] text-slate-400">Digital Solutions & AI Automation Agency</span>
+                <span className="block text-[10px] sm:text-[11px] text-slate-300">Digital Solutions & AI Automation Agency</span>
               </div>
             </Link>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-200">
               <a href="tel:+13148340021" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-purple-400" /> +1 (314) 834-0021
+                <Phone className="w-3.5 h-3.5 text-purple-300" /> +1 (314) 834-0021
               </a>
               <a href="mailto:info@aaenterprisetech.com" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-purple-400" /> info@aaenterprisetech.com
+                <Mail className="w-3.5 h-3.5 text-purple-300" /> info@aaenterprisetech.com
               </a>
             </div>
           </div>
 
-          <div className="pt-6 border-t border-slate-850 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
             <div>© 2026 AA Enterprise Tech. All rights reserved.</div>
             <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-              <Link href="/privacy" className="hover:text-purple-300 transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-purple-300 transition-colors">Terms of Service</Link>
-              <Link href="/refund" className="hover:text-purple-300 transition-colors">Refund Policy</Link>
-              <Link href="/pay" className="text-purple-300 hover:text-purple-200 font-semibold transition-colors">Client Payment Portal</Link>
+              <Link href="/privacy" className="text-slate-300 hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-slate-300 hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="/refund" className="text-slate-300 hover:text-white transition-colors">Refund Policy</Link>
+              <Link href="/pay" className="text-purple-300 hover:text-white font-semibold transition-colors">Client Payment Portal</Link>
             </div>
           </div>
         </div>
