@@ -89,54 +89,95 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: 'AA Enterprise Tech',
-    description: 'Premier digital solutions agency specializing in custom web development, AI automations, and enterprise software.',
-    image: 'https://aaenterprisetech.com/og-image.png',
-    '@id': 'https://aaenterprisetech.com',
-    url: 'https://aaenterprisetech.com',
-    telephone: '+13148340021',
-    email: 'info@aaenterprisetech.com',
-    priceRange: '$$',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Creve Coeur',
-      addressRegion: 'MO',
-      postalCode: '63141',
-      addressCountry: 'US',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 38.6631,
-      longitude: -90.4446,
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday'
-      ],
-      opens: '00:00',
-      closes: '23:59',
-    },
-    sameAs: [
-      'https://twitter.com',
-      'https://linkedin.com'
-    ],
-    serviceArea: {
-      '@type': 'GeoCircle',
-      geoMidpoint: {
-        '@type': 'GeoCoordinates',
-        latitude: 38.6631,
-        longitude: -90.4446,
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://aaenterprisetech.com/#organization',
+        name: 'AA Enterprise Tech',
+        alternateName: ['AA Enterprise', 'AA Enterprise Technology'],
+        url: 'https://aaenterprisetech.com',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://aaenterprisetech.com/icon.png?v=3',
+          width: 512,
+          height: 512,
+          caption: 'AA Enterprise Tech Logo'
+        },
+        image: 'https://aaenterprisetech.com/og-image.png?v=3',
+        description: 'Premier digital solutions agency specializing in custom web development, AI automations, and enterprise software.',
+        telephone: '+13148340021',
+        email: 'info@aaenterprisetech.com',
+        priceRange: '$$',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Creve Coeur',
+          addressRegion: 'MO',
+          postalCode: '63141',
+          addressCountry: 'US',
+        },
+        sameAs: [
+          'https://twitter.com',
+          'https://linkedin.com',
+          'https://github.com/Abdullah11Athar/aaenterprisetech'
+        ]
       },
-      geoRadius: 'Worldwide',
-    },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://aaenterprisetech.com/#website',
+        url: 'https://aaenterprisetech.com',
+        name: 'AA Enterprise Tech',
+        publisher: {
+          '@id': 'https://aaenterprisetech.com/#organization'
+        }
+      },
+      {
+        '@type': 'ProfessionalService',
+        '@id': 'https://aaenterprisetech.com/#service',
+        name: 'AA Enterprise Tech',
+        url: 'https://aaenterprisetech.com',
+        parentOrganization: {
+          '@id': 'https://aaenterprisetech.com/#organization'
+        },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Core Agency Services',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Custom Web Development & Landing Pages',
+                description: 'High-converting Next.js websites engineered for fast load speeds and maximum conversion.'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'AI Workflow Automation & Chatbots',
+                description: 'End-to-end AI workflows built with OpenAI, Claude, and n8n to automate operations 24/7.'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Full Brand Identity & UI/UX Design',
+                description: 'Complete brand kits, typography, wireframes, and design systems.'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Custom SaaS Architecture & Cloud Solutions',
+                description: 'Scalable bespoke software, Supabase databases, and Stripe payment integration.'
+              }
+            }
+          ]
+        }
+      }
+    ]
   };
 
   return (
