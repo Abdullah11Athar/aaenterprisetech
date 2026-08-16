@@ -651,13 +651,15 @@ export default function AAEnterpriseTechHomePage() {
                 <div key={idx} className="rounded-2xl glass-panel border border-slate-800 overflow-hidden">
                   <button
                     onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                    aria-expanded={openFaq === idx}
+                    aria-controls={`faq-answer-${idx}`}
                     className="w-full p-5 sm:p-6 text-left font-semibold text-white flex justify-between items-center hover:bg-slate-900/60 transition-colors"
                   >
                     <span className="text-sm sm:text-base">{faq.q}</span>
                     <ChevronDown className={`w-5 h-5 text-purple-300 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`} />
                   </button>
                   {openFaq === idx && (
-                    <div className="px-5 sm:px-6 pb-6 text-slate-200 text-xs sm:text-sm border-t border-slate-800/60 pt-4 leading-relaxed animate-in fade-in duration-200">
+                    <div id={`faq-answer-${idx}`} className="px-5 sm:px-6 pb-6 text-slate-200 text-xs sm:text-sm border-t border-slate-800/60 pt-4 leading-relaxed animate-in fade-in duration-200">
                       {faq.a}
                     </div>
                   )}
@@ -734,18 +736,18 @@ export default function AAEnterpriseTechHomePage() {
 
                 <form onSubmit={handleFormSubmit} className="space-y-3.5 sm:space-y-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Your Full Name</label>
-                    <input required maxLength={100} type="text" placeholder="John Doe" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
+                    <label htmlFor="full-name" className="block text-xs font-semibold text-slate-300 mb-1">Your Full Name</label>
+                    <input id="full-name" name="full-name" required maxLength={100} type="text" placeholder="John Doe" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-                    <input required maxLength={100} type="email" placeholder="john@company.com" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
+                    <label htmlFor="email-address" className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                    <input id="email-address" name="email" required maxLength={100} type="email" placeholder="john@company.com" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Project Details / Requirements</label>
-                    <textarea required maxLength={2000} rows={4} placeholder="Describe your website, AI automation, branding, or custom software requirements..." className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
+                    <label htmlFor="project-details" className="block text-xs font-semibold text-slate-300 mb-1">Project Details / Requirements</label>
+                    <textarea id="project-details" name="message" required maxLength={2000} rows={4} placeholder="Describe your website, AI automation, branding, or custom software requirements..." className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors" />
                   </div>
-                  <button type="submit" className="w-full py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02]">
+                  <button type="submit" aria-label="Submit Contact Inquiry" className="w-full py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02]">
                     <Send className="w-4 h-4" /> Send Inquiry
                   </button>
                 </form>
