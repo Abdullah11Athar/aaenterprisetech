@@ -43,18 +43,29 @@ export default function AAEnterpriseTechHomePage() {
         setScrolled(false);
       }
 
-      if (isManualScrolling.current) return;
-
-      // Scrollspy detection
+      // Scrollspy detection with Dynamic URL Hash update
+      let currentSection = 'hero';
       const sections = ['services', 'process', 'why-us', 'calculator', 'faq', 'contact'];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
           const rect = el.getBoundingClientRect();
           if (rect.top <= 240 && rect.bottom >= 100) {
-            setActiveSection(sectionId);
+            currentSection = sectionId;
             break;
           }
+        }
+      }
+
+      setActiveSection(currentSection);
+
+      if (!isManualScrolling.current) {
+        if (window.scrollY < 200) {
+          if (window.location.hash) {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+        } else if (currentSection !== 'hero' && window.location.hash !== `#${currentSection}`) {
+          window.history.replaceState(null, '', `#${currentSection}`);
         }
       }
     };
@@ -77,6 +88,9 @@ export default function AAEnterpriseTechHomePage() {
     setMobileMenuOpen(false);
     setActiveSection(id);
     setHighlightedSection(id);
+
+    // Update browser URL immediately on button click
+    window.history.pushState(null, '', `#${id}`);
 
     isManualScrolling.current = true;
     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
@@ -476,7 +490,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Services Showcase */}
         <section
           id="services"
-          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
             highlightedSection === 'services' ? 'section-highlight' : ''
           }`}
         >
@@ -523,7 +537,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* 4-Step Process Section */}
         <section
           id="process"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-mt-16 sm:scroll-mt-20 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
             highlightedSection === 'process' ? 'section-highlight' : ''
           }`}
         >
@@ -557,7 +571,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Why Choose Us */}
         <section
           id="why-us"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
             highlightedSection === 'why-us' ? 'section-highlight' : ''
           }`}
         >
@@ -631,10 +645,10 @@ export default function AAEnterpriseTechHomePage() {
           </div>
         </section>
 
-        {/* Interactive Quote Estimator */}
+        {/* Interactive Quote Estimator (Restored Screenshot 2 View) */}
         <section
           id="calculator"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
@@ -645,45 +659,47 @@ export default function AAEnterpriseTechHomePage() {
               <p className="text-xs sm:text-sm text-slate-200 mt-2">Select the solutions you need for an instant transparent estimate.</p>
             </div>
 
-            <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 shadow-2xl">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-purple-500/40 text-center relative overflow-hidden shadow-2xl shadow-purple-950/40">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 text-left mb-8">
                 {servicesList.map((svc) => {
                   const isChecked = selectedServices.includes(svc.id);
                   return (
                     <div
                       key={svc.id}
                       onClick={() => toggleService(svc.id, svc.price)}
-                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-center justify-between select-none ${
+                      className={`p-4 sm:p-5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between select-none ${
                         isChecked
-                          ? 'bg-purple-950/60 border-purple-500 shadow-lg shadow-purple-950/40 scale-[1.01]'
-                          : 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
+                          ? 'bg-purple-950/80 border-purple-400 text-white shadow-md shadow-purple-500/20 scale-[1.01]'
+                          : 'bg-slate-900/95 border-slate-800 text-slate-200 hover:border-slate-700'
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-5 h-5 rounded-lg flex items-center justify-center transition-colors ${
+                          className={`w-5 h-5 rounded-md flex items-center justify-center transition-colors shrink-0 ${
                             isChecked ? 'bg-purple-600 text-white' : 'border border-slate-700 bg-slate-800'
                           }`}
                         >
-                          {isChecked && <CheckCircle2 className="w-4 h-4" />}
+                          {isChecked && <Check className="w-3.5 h-3.5" />}
                         </div>
                         <div>
                           <div className="text-xs sm:text-sm font-bold text-white">{svc.name}</div>
-                          <div className="text-[10px] sm:text-xs text-slate-200">{svc.category}</div>
+                          <div className="text-[10px] sm:text-xs text-purple-300 font-semibold">{svc.category}</div>
                         </div>
                       </div>
-                      <div className="text-xs sm:text-sm font-bold text-purple-300">+${svc.price}</div>
+                      <div className="text-xs sm:text-sm font-black text-purple-300 shrink-0 ml-3">
+                        +${svc.price}
+                      </div>
                     </div>
                   );
                 })}
               </div>
 
-              <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
                 <div>
-                  <div className="text-xs text-slate-200">Estimated Total Investment</div>
-                  <div className="text-3xl sm:text-4xl font-black text-white">
+                  <div className="text-xs text-slate-300 font-medium">Estimated Total Investment</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white mt-0.5">
                     ${estimatedTotal.toLocaleString()}{' '}
-                    <span className="text-xs font-normal text-slate-300">USD</span>
+                    <span className="text-xs font-normal text-slate-400">USD</span>
                   </div>
                 </div>
                 <a
@@ -701,7 +717,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
@@ -742,7 +758,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >

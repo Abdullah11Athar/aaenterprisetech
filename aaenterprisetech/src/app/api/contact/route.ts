@@ -45,7 +45,51 @@ Received via https://aaenterprisetech.com`,
       `
     };
 
-    // If Resend API Key is provided in environment
+    // 1. Dispatch to Web3Forms (Guaranteed instant inbox delivery to both Zoho & Personal email)
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '64d2d4d8-7cf4-49c0-9fae-6dc3d3b76cf6', // public contact key fallback
+          name,
+          email,
+          message,
+          subject: `🚀 New Client Lead: ${name} (${email}) - AA Enterprise Tech`,
+          from_name: 'AA Enterprise Tech Website Lead',
+          to_email: 'info@aaenterprisetech.com',
+          cc_email: 'abdullah.jet444@gmail.com'
+        })
+      });
+    } catch (e) {
+      console.error('Web3Forms dispatch error:', e);
+    }
+
+    // 2. Dispatch via FormSubmit.co
+    try {
+      await fetch('https://formsubmit.co/ajax/info@aaenterprisetech.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: `New Client Lead: ${name} - AA Enterprise Tech`,
+          _cc: 'abdullah.jet444@gmail.com',
+          _template: 'table'
+        })
+      });
+    } catch (e) {
+      console.error('FormSubmit dispatch error:', e);
+    }
+
+    // 3. If Resend API Key is provided
     if (process.env.RESEND_API_KEY) {
       try {
         await fetch('https://api.resend.com/emails', {
@@ -57,28 +101,8 @@ Received via https://aaenterprisetech.com`,
           body: JSON.stringify(payload),
         });
       } catch (err) {
-        console.error('Error dispatching via Resend:', err);
+        console.error('Resend dispatch error:', err);
       }
-    }
-
-    // Try webhook / form notifier fallback
-    try {
-      await fetch('https://formsubmit.co/ajax/abdullah.jet444@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-          _subject: `New Lead: ${name} (${email}) - AA Enterprise Tech`,
-          _cc: 'info@aaenterprisetech.com'
-        })
-      });
-    } catch (e) {
-      // Fallback
     }
 
     return NextResponse.json({
