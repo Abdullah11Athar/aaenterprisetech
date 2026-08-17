@@ -319,16 +319,13 @@ export default function AAEnterpriseTechHomePage() {
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => scrollToSection(e, item.id)}
-                  className={`relative px-3.5 py-1.5 rounded-xl transition-all duration-300 cursor-pointer select-none ${
+                  className={`px-3.5 py-1.5 rounded-xl transition-all duration-300 cursor-pointer select-none ${
                     isActive
-                      ? 'bg-purple-600/25 text-purple-200 border border-purple-500/50 shadow-md shadow-purple-600/30 scale-[1.03]'
+                      ? 'bg-purple-600/25 text-purple-200 border border-purple-500/60 shadow-md shadow-purple-600/30 scale-[1.03]'
                       : 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent active:scale-95'
                   }`}
                 >
                   {item.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 rounded-full shadow-sm shadow-purple-400" />
-                  )}
                 </a>
               );
             })}
@@ -497,7 +494,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Services Showcase */}
         <section
           id="services"
-          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 transition-all duration-700 ${
             highlightedSection === 'services' ? 'section-highlight' : ''
           }`}
         >
@@ -544,7 +541,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* 4-Step Process Section */}
         <section
           id="process"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
             highlightedSection === 'process' ? 'section-highlight' : ''
           }`}
         >
@@ -578,7 +575,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Why Choose Us */}
         <section
           id="why-us"
-          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
             highlightedSection === 'why-us' ? 'section-highlight' : ''
           }`}
         >
@@ -655,7 +652,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Interactive Quote Estimator (Restored Screenshot 2 View) */}
         <section
           id="calculator"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
@@ -715,7 +712,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
@@ -756,7 +753,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >
