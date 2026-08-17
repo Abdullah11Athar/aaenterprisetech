@@ -712,7 +712,7 @@ export default function AAEnterpriseTechHomePage() {
             </div>
 
             <div className="space-y-3 sm:space-y-4">
-              {faqList.map((faq, idx) => (
+              {faqs.map((faq, idx) => (
                 <div
                   key={idx}
                   className="rounded-2xl glass-card border border-slate-800 overflow-hidden transition-all"
