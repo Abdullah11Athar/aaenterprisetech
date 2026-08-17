@@ -32,9 +32,15 @@ export default function AAEnterpriseTechHomePage() {
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    // Only track mouse pointer on desktop fine-pointer devices (saves mobile CPU)
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
+
+    if (isFinePointer) {
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    }
 
     const handleScroll = () => {
       if (window.scrollY > 40) {
@@ -70,14 +76,15 @@ export default function AAEnterpriseTechHomePage() {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     // Initial run
     handleScroll();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (isFinePointer) {
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -537,7 +544,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* 4-Step Process Section */}
         <section
           id="process"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
             highlightedSection === 'process' ? 'section-highlight' : ''
           }`}
         >
@@ -571,7 +578,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Why Choose Us */}
         <section
           id="why-us"
-          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
             highlightedSection === 'why-us' ? 'section-highlight' : ''
           }`}
         >
@@ -648,7 +655,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Interactive Quote Estimator (Restored Screenshot 2 View) */}
         <section
           id="calculator"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
@@ -717,7 +724,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
@@ -758,7 +765,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-28 transition-all duration-700 ${
+          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-28 content-auto transition-all duration-700 ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >

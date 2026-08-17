@@ -144,4 +144,10 @@ body {
   animation: sectionHighlight 1.8s ease-out;
 }
 
+/* PageSpeed Speed-Index Optimization for below-the-fold content */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
 
