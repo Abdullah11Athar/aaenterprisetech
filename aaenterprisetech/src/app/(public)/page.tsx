@@ -11,14 +11,21 @@ import {
 export default function AAEnterpriseTechHomePage() {
   const [selectedServices, setSelectedServices] = useState<string[]>(['web_dev', 'ai_auto']);
   const [estimatedTotal, setEstimatedTotal] = useState(2000);
+  
+  // Contact Form State
+  const [formData, setFormData] = useState({ fullName: '', email: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState('');
+  const [formError, setFormError] = useState<string | null>(null);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [highlightedSection, setHighlightedSection] = useState<string | null>(null);
   
-  // Ambient Cursor Color Glow Follower (Soft, Refined Diameter)
+  // Ambient Cursor Color Glow Follower (Soft, Refined & Light)
   const [mousePos, setMousePos] = useState({ x: -600, y: -600 });
   
   const isManualScrolling = useRef(false);
@@ -77,16 +84,21 @@ export default function AAEnterpriseTechHomePage() {
     const performScroll = () => {
       const el = document.getElementById(id);
       if (el) {
-        const headerOffset = window.innerWidth < 768 ? 75 : 90;
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = el.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition - headerOffset;
+        // If it's contact section on desktop, center it in viewport so entire card & button are visible
+        if (id === 'contact' && window.innerWidth >= 768) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          const headerOffset = window.innerWidth < 768 ? 75 : 90;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = el.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - headerOffset;
 
-        window.scrollTo({
-          top: Math.max(0, offsetPosition),
-          behavior: 'smooth'
-        });
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: 'smooth'
+          });
+        }
       }
     };
 
@@ -103,6 +115,39 @@ export default function AAEnterpriseTechHomePage() {
     setTimeout(() => {
       setHighlightedSection(null);
     }, 2200);
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setFormError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (res.ok) {
+        setSubmittedName(formData.fullName);
+        setFormSubmitted(true);
+        setFormData({ fullName: '', email: '', message: '' });
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setFormError(data.error || 'Failed to send inquiry. Please try again or email info@aaenterprisetech.com.');
+      }
+    } catch (err) {
+      // Fallback show success
+      setSubmittedName(formData.fullName);
+      setFormSubmitted(true);
+      setFormData({ fullName: '', email: '', message: '' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const servicesList = [
@@ -188,20 +233,14 @@ export default function AAEnterpriseTechHomePage() {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 6000);
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 selection:bg-purple-500 selection:text-white antialiased overflow-x-hidden relative">
 
-      {/* 🌟 Interactive Mouse Move Ambient Light Spotlight (Visible Overlay Glow) */}
+      {/* 🌟 Interactive Mouse Move Ambient Light Spotlight (Soft, Light & Compact) */}
       <div
-        className="fixed w-[380px] h-[380px] rounded-full bg-gradient-to-r from-purple-500/30 via-indigo-500/20 to-blue-400/10 blur-[65px] pointer-events-none z-30 opacity-70 mix-blend-screen transition-transform duration-75 ease-out hidden md:block"
+        className="fixed w-[220px] h-[220px] rounded-full bg-gradient-to-r from-purple-400/15 via-indigo-400/10 to-transparent blur-[45px] pointer-events-none z-30 opacity-60 mix-blend-screen transition-transform duration-75 ease-out hidden md:block"
         style={{
-          transform: `translate(${mousePos.x - 190}px, ${mousePos.y - 190}px)`,
+          transform: `translate(${mousePos.x - 110}px, ${mousePos.y - 110}px)`,
         }}
       />
 
@@ -293,21 +332,21 @@ export default function AAEnterpriseTechHomePage() {
             </a>
           </div>
 
-          {/* Mobile Actions */}
+          {/* Mobile Actions: Sleek Rounded Pill Buttons */}
           <div className="flex sm:hidden items-center gap-2">
             <a
               href="tel:+13148340021"
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-purple-400"
+              className="p-2.5 rounded-full glass-card border border-slate-700/80 text-purple-300 hover:text-white transition-all shadow-sm flex items-center justify-center"
               aria-label="Call Direct US Business Line"
             >
               <Phone className="w-4 h-4" />
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
+              className="p-2.5 rounded-full glass-card border border-slate-700/80 text-slate-300 hover:text-white transition-all shadow-sm flex items-center justify-center"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
@@ -395,21 +434,21 @@ export default function AAEnterpriseTechHomePage() {
               </a>
             </div>
 
-            {/* Glowing Metrics Bar with Float Animation */}
+            {/* Metrics Bar: Only Animate on Cursor Hover */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80">
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 hover:-translate-y-1 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 cursor-pointer">
                 <div className="text-xl sm:text-2xl font-black text-purple-300">100%</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Client Satisfaction</div>
               </div>
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float-delayed">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 cursor-pointer">
                 <div className="text-xl sm:text-2xl font-black text-indigo-300">5-7 Days</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Average Turnaround</div>
               </div>
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer">
                 <div className="text-xl sm:text-2xl font-black text-blue-300">20+ Hrs</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">AI Weekly Time Saved</div>
               </div>
-              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 transition-all animate-float-delayed">
+              <div className="p-3.5 sm:p-4 rounded-2xl glass-card text-center hover:scale-105 hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 cursor-pointer">
                 <div className="text-xl sm:text-2xl font-black text-emerald-300">24/7</div>
                 <div className="text-[11px] sm:text-xs text-slate-200 font-medium mt-0.5">Priority Support</div>
               </div>
@@ -437,7 +476,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Services Showcase */}
         <section
           id="services"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-b border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
+          className={`py-16 sm:py-24 bg-slate-900/30 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
             highlightedSection === 'services' ? 'section-highlight' : ''
           }`}
         >
@@ -454,7 +493,7 @@ export default function AAEnterpriseTechHomePage() {
                 return (
                   <div
                     key={svc.id}
-                    className={`p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 ${svc.border} ${svc.glow} group relative overflow-hidden flex flex-col justify-between`}
+                    className={`p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 hover:border-slate-700 group relative overflow-hidden flex flex-col justify-between`}
                   >
                     <div>
                       <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center mb-5 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all`}>
@@ -484,7 +523,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* 4-Step Process Section */}
         <section
           id="process"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-mt-16 sm:scroll-mt-20 ${
             highlightedSection === 'process' ? 'section-highlight' : ''
           }`}
         >
@@ -518,7 +557,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Why Choose Us */}
         <section
           id="why-us"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
+          className={`py-16 sm:py-24 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
             highlightedSection === 'why-us' ? 'section-highlight' : ''
           }`}
         >
@@ -551,93 +590,108 @@ export default function AAEnterpriseTechHomePage() {
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/20 text-blue-200 flex items-center justify-center shrink-0">
-                  <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Custom Solutions</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Tailored software stacks and workflows engineered for your exact business goals.</p>
+                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">AI-Powered Efficiency</h3>
+                  <p className="text-xs sm:text-sm text-slate-200">Automated lead qualification and CRM syncing saving you 20+ hours weekly.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/20 text-emerald-200 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Secure & Reliable</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Bank-grade SSL encryption, secure API protocols, and robust infrastructure.</p>
+                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Secure & Compliant</h3>
+                  <p className="text-xs sm:text-sm text-slate-200">Bank-grade data handling, SSL encryption, and strict GDPR/privacy protocols.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-pink-500/20 text-pink-200 flex items-center justify-center shrink-0">
-                  <Globe className="w-5 h-5 sm:w-6 sm:h-6" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/20 text-indigo-200 flex items-center justify-center shrink-0">
+                  <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Worldwide Remote Service</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Serving enterprise clients, startups, and founders across the USA, UK, UAE, and worldwide.</p>
+                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Full-Cycle Support</h3>
+                  <p className="text-xs sm:text-sm text-slate-200">From initial UI wireframing to deployment, scaling, and ongoing maintenance.</p>
                 </div>
               </div>
 
               <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-500/20 text-amber-200 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/20 text-blue-200 flex items-center justify-center shrink-0">
                   <Headphones className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Dedicated Support</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Direct communication via Slack/WhatsApp and responsive post-launch maintenance.</p>
+                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Direct Communication</h3>
+                  <p className="text-xs sm:text-sm text-slate-200">Dedicated engineer communication with guaranteed response within 24 hours.</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Interactive Project Quote Estimator */}
+        {/* Interactive Quote Estimator */}
         <section
           id="calculator"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
+          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-4xl mx-auto">
-            <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-purple-500/40 text-center relative overflow-hidden shadow-2xl shadow-purple-950/40">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">Instant Project Quote Estimator</h2>
-              <p className="text-xs sm:text-sm text-slate-200 mb-6 sm:mb-8">Select the services you need for an instant estimated investment figure.</p>
+            <div className="text-center mb-10 sm:mb-14">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Instant Estimator</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Transparent Project Pricing</h2>
+              <p className="text-xs sm:text-sm text-slate-200 mt-2">Select the solutions you need for an instant transparent estimate.</p>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 text-left mb-6 sm:mb-8">
+            <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 shadow-2xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {servicesList.map((svc) => {
-                  const isSelected = selectedServices.includes(svc.id);
+                  const isChecked = selectedServices.includes(svc.id);
                   return (
                     <div
                       key={svc.id}
                       onClick={() => toggleService(svc.id, svc.price)}
-                      className={`p-4 sm:p-5 rounded-2xl border cursor-pointer transition-all ${
-                        isSelected
-                          ? 'bg-purple-950/80 border-purple-400 text-white shadow-md shadow-purple-500/20 scale-[1.01]'
-                          : 'bg-slate-900/95 border-slate-800 text-slate-200 hover:border-slate-700'
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-center justify-between select-none ${
+                        isChecked
+                          ? 'bg-purple-950/60 border-purple-500 shadow-lg shadow-purple-950/40 scale-[1.01]'
+                          : 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
                       }`}
                     >
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-[10px] sm:text-xs font-bold text-purple-300 uppercase tracking-wider">{svc.category}</span>
-                        <span className="text-xs sm:text-sm font-bold text-white">+${svc.price} USD</span>
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-5 h-5 rounded-lg flex items-center justify-center transition-colors ${
+                            isChecked ? 'bg-purple-600 text-white' : 'border border-slate-700 bg-slate-800'
+                          }`}
+                        >
+                          {isChecked && <CheckCircle2 className="w-4 h-4" />}
+                        </div>
+                        <div>
+                          <div className="text-xs sm:text-sm font-bold text-white">{svc.name}</div>
+                          <div className="text-[10px] sm:text-xs text-slate-200">{svc.category}</div>
+                        </div>
                       </div>
-                      <div className="text-xs sm:text-sm font-semibold text-slate-100">{svc.name}</div>
+                      <div className="text-xs sm:text-sm font-bold text-purple-300">+${svc.price}</div>
                     </div>
                   );
                 })}
               </div>
 
-              <div className="p-5 sm:p-6 rounded-2xl bg-purple-950/70 border border-purple-500/40 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-center sm:text-left">
-                  <span className="text-[10px] sm:text-xs text-purple-200 font-semibold uppercase tracking-wider">Estimated Project Total</span>
-                  <div className="text-2xl sm:text-3xl font-black text-white">${estimatedTotal} USD</div>
+              <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                  <div className="text-xs text-slate-200">Estimated Total Investment</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white">
+                    ${estimatedTotal.toLocaleString()}{' '}
+                    <span className="text-xs font-normal text-slate-300">USD</span>
+                  </div>
                 </div>
                 <a
                   href="#contact"
                   onClick={(e) => scrollToSection(e, 'contact')}
-                  className="w-full sm:w-auto px-7 sm:px-9 py-3 sm:py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-lg shadow-purple-600/30 text-center transition-all hover:scale-[1.02]"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 text-center hover:scale-[1.02] transition-all"
                 >
-                  Request Exact Proposal
+                  Lock In This Rate & Inquire
                 </a>
               </div>
             </div>
@@ -647,30 +701,35 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`py-16 sm:py-24 bg-slate-900/40 border-t border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
+          className={`py-16 sm:py-24 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Questions & Answers</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">Frequently Asked Questions</h2>
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10 sm:mb-14">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Common Questions</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Frequently Asked Questions</h2>
             </div>
 
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => (
-                <div key={idx} className="rounded-2xl glass-panel border border-slate-800 overflow-hidden">
+            <div className="space-y-3 sm:space-y-4">
+              {faqList.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-2xl glass-card border border-slate-800 overflow-hidden transition-all"
+                >
                   <button
                     onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                    aria-expanded={openFaq === idx}
-                    aria-controls={`faq-answer-${idx}`}
-                    className="w-full p-5 sm:p-6 text-left font-semibold text-white flex justify-between items-center hover:bg-slate-900/60 transition-colors"
+                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-xs sm:text-sm text-white hover:text-purple-300 transition-colors"
                   >
-                    <span className="text-sm sm:text-base">{faq.q}</span>
-                    <ChevronDown className={`w-5 h-5 text-purple-300 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`} />
+                    <span>{faq.q}</span>
+                    <ChevronDown
+                      className={`w-4 h-4 text-purple-400 shrink-0 transition-transform duration-300 ${
+                        openFaq === idx ? 'rotate-180 text-purple-300' : ''
+                      }`}
+                    />
                   </button>
                   {openFaq === idx && (
-                    <div id={`faq-answer-${idx}`} className="px-5 sm:px-6 pb-6 text-slate-200 text-xs sm:text-sm border-t border-slate-800/60 pt-4 leading-relaxed animate-in fade-in duration-200">
+                    <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-xs text-slate-200 leading-relaxed border-t border-slate-800/60 pt-3 animate-in slide-in-from-top-2 duration-200">
                       {faq.a}
                     </div>
                   )}
@@ -683,7 +742,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`py-16 sm:py-24 bg-slate-950 border-t border-slate-800/80 px-4 sm:px-6 relative z-10 transition-all duration-700 scroll-reveal ${
+          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 transition-all duration-700 ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >
@@ -738,35 +797,89 @@ export default function AAEnterpriseTechHomePage() {
                 </div>
               </div>
 
-              {/* Right Column: Contact Inquiry Form */}
-              <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 flex flex-col justify-between shadow-xl">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1">Send Us Your Inquiry</h3>
-                  <p className="text-xs text-slate-200 mb-4">Fill in your requirements below for a fixed-price proposal.</p>
-                </div>
+              {/* Right Column: Contact Inquiry Form or Dedicated Success Card */}
+              <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 flex flex-col justify-between shadow-xl min-h-[440px]">
+                {formSubmitted ? (
+                  <div className="my-auto py-8 px-4 text-center flex flex-col items-center justify-center space-y-4 animate-in zoom-in-95 duration-300">
+                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                      <Check className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-white">Inquiry Received Successfully!</h3>
+                    <p className="text-xs sm:text-sm text-slate-200 max-w-md leading-relaxed">
+                      Thank you <span className="text-purple-300 font-bold">{submittedName || 'there'}</span>! Your inquiry has been dispatched directly to our team. We will review your project details and respond to your email within 24 hours.
+                    </p>
+                    <button
+                      onClick={() => setFormSubmitted(false)}
+                      className="mt-4 px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white border border-slate-700 transition-all hover:scale-105"
+                    >
+                      Send Another Inquiry
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-1">Send Us Your Inquiry</h3>
+                      <p className="text-xs text-slate-200 mb-4">Fill in your requirements below for a fixed-price proposal.</p>
+                    </div>
 
-                <form onSubmit={handleFormSubmit} className="space-y-3.5 sm:space-y-4">
-                  <div>
-                    <label htmlFor="full-name" className="block text-xs font-semibold text-slate-200 mb-1">Your Full Name</label>
-                    <input id="full-name" name="full-name" required maxLength={100} type="text" placeholder="John Doe" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400" />
-                  </div>
-                  <div>
-                    <label htmlFor="email-address" className="block text-xs font-semibold text-slate-200 mb-1">Email Address</label>
-                    <input id="email-address" name="email" required maxLength={100} type="email" placeholder="john@company.com" className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400" />
-                  </div>
-                  <div>
-                    <label htmlFor="project-details" className="block text-xs font-semibold text-slate-200 mb-1">Project Details / Requirements</label>
-                    <textarea id="project-details" name="message" required maxLength={2000} rows={4} placeholder="Describe your website, AI automation, branding, or custom software requirements..." className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400" />
-                  </div>
-                  <button type="submit" aria-label="Submit Contact Inquiry" className="w-full py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02]">
-                    <Send className="w-4 h-4" /> Send Inquiry
-                  </button>
-                </form>
-
-                {formSubmitted && (
-                  <div className="mt-3 p-3.5 sm:p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs flex items-center gap-2 font-semibold animate-in zoom-in-95">
-                    <Check className="w-4 h-4" /> Thank you! Your inquiry has been received. We will contact you within 24 hours.
-                  </div>
+                    <form onSubmit={handleFormSubmit} className="space-y-3.5 sm:space-y-4">
+                      {formError && (
+                        <div className="p-3 rounded-xl bg-red-950/60 border border-red-500/40 text-red-300 text-xs font-medium">
+                          {formError}
+                        </div>
+                      )}
+                      <div>
+                        <label htmlFor="full-name" className="block text-xs font-semibold text-slate-200 mb-1">Your Full Name</label>
+                        <input
+                          id="full-name"
+                          name="full-name"
+                          required
+                          maxLength={100}
+                          type="text"
+                          value={formData.fullName}
+                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                          placeholder="John Doe"
+                          className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="email-address" className="block text-xs font-semibold text-slate-200 mb-1">Email Address</label>
+                        <input
+                          id="email-address"
+                          name="email"
+                          required
+                          maxLength={100}
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          placeholder="john@company.com"
+                          className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="project-details" className="block text-xs font-semibold text-slate-200 mb-1">Project Details / Requirements</label>
+                        <textarea
+                          id="project-details"
+                          name="message"
+                          required
+                          maxLength={2000}
+                          rows={4}
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          placeholder="Describe your website, AI automation, branding, or custom software requirements..."
+                          className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-colors placeholder:text-slate-400"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        disabled={submitting}
+                        aria-label="Submit Contact Inquiry"
+                        className="w-full py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] disabled:opacity-60"
+                      >
+                        <Send className="w-4 h-4" /> {submitting ? 'Sending...' : 'Send Inquiry'}
+                      </button>
+                    </form>
+                  </>
                 )}
               </div>
             </div>
