@@ -680,18 +680,9 @@ export default function AAEnterpriseTechHomePage() {
                           : 'bg-slate-900/95 border-slate-800 text-slate-200 hover:border-slate-700'
                       }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`w-5 h-5 rounded-md flex items-center justify-center transition-colors shrink-0 ${
-                            isChecked ? 'bg-purple-600 text-white' : 'border border-slate-700 bg-slate-800'
-                          }`}
-                        >
-                          {isChecked && <Check className="w-3.5 h-3.5" />}
-                        </div>
-                        <div>
-                          <div className="text-xs sm:text-sm font-bold text-white">{svc.name}</div>
-                          <div className="text-[10px] sm:text-xs text-purple-300 font-semibold">{svc.category}</div>
-                        </div>
+                      <div>
+                        <div className="text-xs sm:text-sm font-bold text-white">{svc.name}</div>
+                        <div className="text-[10px] sm:text-xs text-purple-300 font-semibold mt-0.5">{svc.category}</div>
                       </div>
                       <div className="text-xs sm:text-sm font-black text-purple-300 shrink-0 ml-3">
                         +${svc.price}
