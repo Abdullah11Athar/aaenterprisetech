@@ -45,30 +45,28 @@ Received via https://aaenterprisetech.com`,
       `
     };
 
-    // 1. Dispatch to Web3Forms (Guaranteed instant inbox delivery to both Zoho & Personal email)
+    // 1. Dispatch via FormSubmit directly to personal Gmail
     try {
-      await fetch('https://api.web3forms.com/submit', {
+      await fetch('https://formsubmit.co/ajax/abdullah.jet444@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: '64d2d4d8-7cf4-49c0-9fae-6dc3d3b76cf6', // public contact key fallback
           name,
           email,
           message,
-          subject: `🚀 New Client Lead: ${name} (${email}) - AA Enterprise Tech`,
-          from_name: 'AA Enterprise Tech Website Lead',
-          to_email: 'info@aaenterprisetech.com',
-          cc_email: 'abdullah.jet444@gmail.com'
+          _subject: `🚀 New Lead: ${name} (${email}) - AA Enterprise Tech`,
+          _captcha: 'false',
+          _template: 'table'
         })
       });
     } catch (e) {
-      console.error('Web3Forms dispatch error:', e);
+      console.error('FormSubmit Gmail error:', e);
     }
 
-    // 2. Dispatch via FormSubmit.co
+    // 2. Dispatch via FormSubmit directly to Zoho business inbox
     try {
       await fetch('https://formsubmit.co/ajax/info@aaenterprisetech.com', {
         method: 'POST',
@@ -80,13 +78,13 @@ Received via https://aaenterprisetech.com`,
           name,
           email,
           message,
-          _subject: `New Client Lead: ${name} - AA Enterprise Tech`,
-          _cc: 'abdullah.jet444@gmail.com',
+          _subject: `🚀 New Business Inquiry: ${name} - AA Enterprise Tech`,
+          _captcha: 'false',
           _template: 'table'
         })
       });
     } catch (e) {
-      console.error('FormSubmit dispatch error:', e);
+      console.error('FormSubmit Zoho error:', e);
     }
 
     // 3. If Resend API Key is provided

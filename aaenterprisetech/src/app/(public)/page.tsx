@@ -49,6 +49,9 @@ export default function AAEnterpriseTechHomePage() {
         setScrolled(false);
       }
 
+      // If user clicked a navbar button, do not run scrollspy or intermediate button switching during smooth scroll
+      if (isManualScrolling.current) return;
+
       // Scrollspy detection with Dynamic URL Hash update
       let currentSection = 'hero';
       const sections = ['services', 'process', 'why-us', 'calculator', 'faq', 'contact'];
@@ -65,14 +68,12 @@ export default function AAEnterpriseTechHomePage() {
 
       setActiveSection(currentSection);
 
-      if (!isManualScrolling.current) {
-        if (window.scrollY < 200) {
-          if (window.location.hash) {
-            window.history.replaceState(null, '', window.location.pathname);
-          }
-        } else if (currentSection !== 'hero' && window.location.hash !== `#${currentSection}`) {
-          window.history.replaceState(null, '', `#${currentSection}`);
+      if (window.scrollY < 200) {
+        if (window.location.hash) {
+          window.history.replaceState(null, '', window.location.pathname);
         }
+      } else if (currentSection !== 'hero' && window.location.hash !== `#${currentSection}`) {
+        window.history.replaceState(null, '', `#${currentSection}`);
       }
     };
 
@@ -93,10 +94,9 @@ export default function AAEnterpriseTechHomePage() {
     e.preventDefault();
     const wasMobileOpen = mobileMenuOpen;
     setMobileMenuOpen(false);
+    
+    // Immediately set active target button with zero lag
     setActiveSection(id);
-    setHighlightedSection(id);
-
-    // Update browser URL immediately on button click
     window.history.pushState(null, '', `#${id}`);
 
     isManualScrolling.current = true;
@@ -105,7 +105,6 @@ export default function AAEnterpriseTechHomePage() {
     const performScroll = () => {
       const el = document.getElementById(id);
       if (el) {
-        // If it's contact section on desktop, center it in viewport so entire card & button are visible
         if (id === 'contact' && window.innerWidth >= 768) {
           el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
@@ -131,11 +130,7 @@ export default function AAEnterpriseTechHomePage() {
 
     scrollTimeout.current = setTimeout(() => {
       isManualScrolling.current = false;
-    }, 1000);
-
-    setTimeout(() => {
-      setHighlightedSection(null);
-    }, 2200);
+    }, 800);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
