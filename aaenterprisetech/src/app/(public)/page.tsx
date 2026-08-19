@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight, Globe, Bot, Palette, Briefcase, CheckCircle2, ShieldCheck,
   Clock, Layers, Headphones, Sparkles, Send, Phone, Mail, Calculator, Star, Check, Menu, X,
@@ -294,9 +295,14 @@ export default function AAEnterpriseTechHomePage() {
             }}
             className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group shrink-0"
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-blue-500 flex items-center justify-center font-black text-white text-xs sm:text-sm shadow-md shadow-purple-500/30 group-hover:scale-105 group-hover:rotate-2 transition-all">
-              AA
-            </div>
+            <Image
+              src="/Logo.png"
+              alt="AA Enterprise Tech"
+              width={40}
+              height={40}
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover shadow-md shadow-purple-500/30 group-hover:scale-105 transition-all"
+              priority
+            />
             <div className="flex flex-col">
               <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight text-white group-hover:text-purple-300 transition-colors leading-none">
                 AA Enterprise Tech
@@ -913,9 +919,13 @@ export default function AAEnterpriseTechHomePage() {
               }}
               className="flex items-center gap-3 cursor-pointer group"
             >
-              <div className="w-10 h-10 rounded-[20px] sm:rounded-[24px] bg-gradient-to-tr from-purple-600 via-indigo-500 to-blue-500 flex items-center justify-center font-black text-white text-xs sm:text-sm shadow-lg shadow-purple-600/30 group-hover:scale-105 group-hover:rotate-3 transition-all border border-purple-400/30">
-                AA
-              </div>
+              <Image
+                src="/Logo.png"
+                alt="AA Enterprise Tech"
+                width={44}
+                height={44}
+                className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-purple-600/30 group-hover:scale-105 transition-all"
+              />
               <div>
                 <span className="font-bold text-white group-hover:text-purple-300 transition-colors">AA Enterprise Tech</span>
                 <span className="block text-[10px] sm:text-[11px] text-slate-300">Digital Solutions & AI Automation Agency</span>
