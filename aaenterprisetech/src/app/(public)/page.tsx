@@ -498,34 +498,34 @@ export default function AAEnterpriseTechHomePage() {
         {/* Services Showcase */}
         <section
           id="services"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 transition-all duration-700 ${
+          className={`pt-4 sm:pt-6 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 transition-all duration-700 ${
             highlightedSection === 'services' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Our Expertise</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Comprehensive Digital Solutions</h2>
-              <p className="text-xs sm:text-sm text-slate-200 mt-2 sm:mt-3">Tailored services engineered to deliver real-world business results.</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Comprehensive Digital Solutions</h2>
+              <p className="text-xs sm:text-sm text-slate-200 mt-1">Tailored services engineered to deliver real-world business results.</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {servicesList.map((svc) => {
                 const IconComp = svc.icon;
                 return (
                   <div
                     key={svc.id}
-                    className={`p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 hover:border-slate-700 group relative overflow-hidden flex flex-col justify-between`}
+                    className={`p-5 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 hover:border-slate-700 group relative overflow-hidden flex flex-col justify-between`}
                   >
                     <div>
-                      <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center mb-5 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all`}>
-                        <IconComp className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all`}>
+                        <IconComp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{svc.category}</h3>
-                      <p className="text-xs sm:text-sm text-slate-100 mb-3 font-semibold">{svc.name}</p>
-                      <p className="text-xs sm:text-sm text-slate-200 leading-relaxed mb-4">{svc.desc}</p>
+                      <h3 className="text-base sm:text-lg font-bold text-white mb-1">{svc.category}</h3>
+                      <p className="text-xs sm:text-sm text-slate-100 mb-2 font-semibold">{svc.name}</p>
+                      <p className="text-xs text-slate-200 leading-relaxed mb-4">{svc.desc}</p>
                     </div>
-                    <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                    <div className="pt-3.5 border-t border-slate-800/80 flex items-center justify-between">
                       <span className="text-xs font-bold text-purple-300">From ${svc.price} USD</span>
                       <a
                         href="#contact"
@@ -545,29 +545,29 @@ export default function AAEnterpriseTechHomePage() {
         {/* 4-Step Process Section */}
         <section
           id="process"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
+          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'process' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Streamlined Workflow</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">How We Bring Your Vision To Life</h2>
-              <p className="text-xs sm:text-sm text-slate-200 mt-2 sm:mt-3">A transparent, agile process designed for rapid execution and flawless delivery.</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">How We Bring Your Vision To Life</h2>
+              <p className="text-xs sm:text-sm text-slate-200 mt-1">A transparent, agile process designed for rapid execution and flawless delivery.</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {steps.map((s, idx) => {
                 const StepIcon = s.icon;
                 return (
-                  <div key={idx} className="p-6 rounded-2xl glass-card border border-slate-800 hover:border-purple-500/50 transition-all relative group hover:-translate-y-1">
-                    <div aria-hidden="true" className="text-3xl font-black text-slate-500 group-hover:text-purple-300 transition-colors mb-3">
+                  <div key={idx} className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 hover:border-purple-500/50 transition-all relative group hover:-translate-y-1">
+                    <div aria-hidden="true" className="text-2xl sm:text-3xl font-black text-slate-500 group-hover:text-purple-300 transition-colors mb-2">
                       {s.step}
                     </div>
-                    <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center mb-2.5">
                       <StepIcon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-bold text-white text-base mb-1.5">{s.title}</h3>
+                    <h3 className="font-bold text-white text-sm sm:text-base mb-1">{s.title}</h3>
                     <p className="text-xs text-slate-200 leading-relaxed">{s.desc}</p>
                   </div>
                 );
@@ -579,74 +579,74 @@ export default function AAEnterpriseTechHomePage() {
         {/* Why Choose Us */}
         <section
           id="why-us"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
+          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'why-us' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Our Commitments</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Why Choose AA Enterprise Tech?</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Why Choose AA Enterprise Tech?</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center shrink-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center shrink-0">
                   <Star className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Professional Quality</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Enterprise-grade standards across code, visual design, and software reliability.</p>
+                  <h3 className="font-bold text-white text-sm sm:text-base mb-0.5">Professional Quality</h3>
+                  <p className="text-xs text-slate-200">Enterprise-grade standards across code, visual design, and software reliability.</p>
                 </div>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/20 text-indigo-200 flex items-center justify-center shrink-0">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-indigo-500/20 text-indigo-200 flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Fast Turnaround</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Agile sprints and rapid delivery to help you launch ahead of competitors.</p>
+                  <h3 className="font-bold text-white text-sm sm:text-base mb-0.5">Fast Turnaround</h3>
+                  <p className="text-xs text-slate-200">Agile sprints and rapid delivery to help you launch ahead of competitors.</p>
                 </div>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/20 text-blue-200 flex items-center justify-center shrink-0">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-500/20 text-blue-200 flex items-center justify-center shrink-0">
                   <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">AI-Powered Efficiency</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Automated lead qualification and CRM syncing saving you 20+ hours weekly.</p>
+                  <h3 className="font-bold text-white text-sm sm:text-base mb-0.5">AI-Powered Efficiency</h3>
+                  <p className="text-xs text-slate-200">Automated lead qualification and CRM syncing saving you 20+ hours weekly.</p>
                 </div>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center shrink-0">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-purple-500/20 text-purple-200 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Secure & Compliant</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Bank-grade data handling, SSL encryption, and strict GDPR/privacy protocols.</p>
+                  <h3 className="font-bold text-white text-sm sm:text-base mb-0.5">Secure & Compliant</h3>
+                  <p className="text-xs text-slate-200">Bank-grade data handling, SSL encryption, and strict GDPR/privacy protocols.</p>
                 </div>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/20 text-indigo-200 flex items-center justify-center shrink-0">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-indigo-500/20 text-indigo-200 flex items-center justify-center shrink-0">
                   <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Full-Cycle Support</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">From initial UI wireframing to deployment, scaling, and ongoing maintenance.</p>
+                  <h3 className="font-bold text-white text-sm sm:text-base mb-0.5">Full-Cycle Support</h3>
+                  <p className="text-xs text-slate-200">From initial UI wireframing to deployment, scaling, and ongoing maintenance.</p>
                 </div>
               </div>
 
-              <div className="p-5 sm:p-6 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/20 text-blue-200 flex items-center justify-center shrink-0">
+              <div className="p-4 sm:p-5 rounded-2xl glass-card border border-slate-800 flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-500/20 text-blue-200 flex items-center justify-center shrink-0">
                   <Headphones className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base sm:text-lg mb-1">Direct Communication</h3>
-                  <p className="text-xs sm:text-sm text-slate-200">Dedicated engineer communication with guaranteed response within 24 hours.</p>
+                  <h3 className="font-bold text-white text-sm sm:text-base mb-0.5">Direct Communication</h3>
+                  <p className="text-xs text-slate-200">Dedicated engineer communication with guaranteed response within 24 hours.</p>
                 </div>
               </div>
             </div>
@@ -656,26 +656,26 @@ export default function AAEnterpriseTechHomePage() {
         {/* Interactive Quote Estimator (Restored Screenshot 2 View) */}
         <section
           id="calculator"
-          className={`py-12 sm:py-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8 sm:mb-12">
+            <div className="text-center mb-5 sm:mb-6">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Instant Estimator</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Transparent Project Pricing</h2>
-              <p className="text-xs sm:text-sm text-slate-200 mt-1.5">Select the solutions you need for an instant transparent estimate.</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Transparent Project Pricing</h2>
+              <p className="text-xs sm:text-sm text-slate-200 mt-1">Select the solutions you need for an instant transparent estimate.</p>
             </div>
 
-            <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-purple-500/40 text-center relative overflow-hidden shadow-2xl shadow-purple-950/40">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 text-left mb-8">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-purple-500/40 text-center relative overflow-hidden shadow-2xl shadow-purple-950/40">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 text-left mb-6">
                 {servicesList.map((svc) => {
                   const isChecked = selectedServices.includes(svc.id);
                   return (
                     <div
                       key={svc.id}
                       onClick={() => toggleService(svc.id, svc.price)}
-                      className={`p-4 sm:p-5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between select-none ${
+                      className={`p-4 sm:p-4.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between select-none ${
                         isChecked
                           ? 'bg-purple-950/80 border-purple-400 text-white shadow-md shadow-purple-500/20 scale-[1.01]'
                           : 'bg-slate-900/95 border-slate-800 text-slate-200 hover:border-slate-700'
@@ -693,10 +693,10 @@ export default function AAEnterpriseTechHomePage() {
                 })}
               </div>
 
-              <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
+              <div className="pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-5 text-left">
                 <div>
                   <div className="text-xs text-slate-300 font-medium">Estimated Total Investment</div>
-                  <div className="text-3xl sm:text-4xl font-black text-white mt-0.5">
+                  <div className="text-2xl sm:text-3xl font-black text-white mt-0.5">
                     ${estimatedTotal.toLocaleString()}{' '}
                     <span className="text-xs font-normal text-slate-400">USD</span>
                   </div>
@@ -704,7 +704,7 @@ export default function AAEnterpriseTechHomePage() {
                 <a
                   href="#contact"
                   onClick={(e) => scrollToSection(e, 'contact')}
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 text-center hover:scale-[1.02] transition-all"
+                  className="w-full sm:w-auto px-8 py-3 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 text-center hover:scale-[1.02] transition-all"
                 >
                   Lock In This Rate & Inquire
                 </a>
@@ -716,17 +716,17 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`py-12 sm:py-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8 sm:mb-12">
+            <div className="text-center mb-5 sm:mb-6">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Common Questions</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Frequently Asked Questions</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Frequently Asked Questions</h2>
             </div>
 
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-3">
               {faqs.map((faq, idx) => (
                 <div
                   key={idx}
@@ -734,7 +734,7 @@ export default function AAEnterpriseTechHomePage() {
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-xs sm:text-sm text-white hover:text-purple-300 transition-colors"
+                    className="w-full p-4 text-left flex items-center justify-between gap-4 font-bold text-xs sm:text-sm text-white hover:text-purple-300 transition-colors"
                   >
                     <span>{faq.q}</span>
                     <ChevronDown
@@ -744,7 +744,7 @@ export default function AAEnterpriseTechHomePage() {
                     />
                   </button>
                   {openFaq === idx && (
-                    <div className="px-4 pb-4 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800/60 pt-3 animate-in slide-in-from-top-2 duration-200">
+                    <div className="px-4 pb-4 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800/60 pt-2.5 animate-in slide-in-from-top-2 duration-200">
                       {faq.a}
                     </div>
                   )}
@@ -757,7 +757,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`pt-5 sm:pt-8 pb-16 sm:py-20 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >
