@@ -51,7 +51,9 @@ Received via https://aaenterprisetech.com`,
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Origin': 'https://aaenterprisetech.com',
+          'Referer': 'https://aaenterprisetech.com/'
         },
         body: JSON.stringify({
           name,
@@ -72,7 +74,9 @@ Received via https://aaenterprisetech.com`,
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Origin': 'https://aaenterprisetech.com',
+          'Referer': 'https://aaenterprisetech.com/'
         },
         body: JSON.stringify({
           name,
