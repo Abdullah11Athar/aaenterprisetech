@@ -105,10 +105,18 @@ export default function AAEnterpriseTechHomePage() {
     const performScroll = () => {
       const el = document.getElementById(id);
       if (el) {
-        if (id === 'contact' && window.innerWidth >= 768) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (id === 'contact' && window.innerWidth < 768) {
+          // On mobile, scroll directly to the inquiry form input card
+          const formEl = document.getElementById('inquiry-form') || el;
+          const headerOffset = 65;
+          const elementPosition = formEl.getBoundingClientRect().top - document.body.getBoundingClientRect().top;
+          window.scrollTo({
+            top: Math.max(0, elementPosition - headerOffset),
+            behavior: 'smooth'
+          });
         } else {
-          const headerOffset = window.innerWidth < 768 ? 75 : 90;
+          // Standard precise offset calculation
+          const headerOffset = window.innerWidth < 768 ? 65 : 80;
           const bodyRect = document.body.getBoundingClientRect().top;
           const elementRect = el.getBoundingClientRect().top;
           const elementPosition = elementRect - bodyRect;
@@ -647,15 +655,15 @@ export default function AAEnterpriseTechHomePage() {
         {/* Interactive Quote Estimator (Restored Screenshot 2 View) */}
         <section
           id="calculator"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
+          className={`py-12 sm:py-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10 sm:mb-14">
+            <div className="text-center mb-8 sm:mb-12">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Instant Estimator</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Transparent Project Pricing</h2>
-              <p className="text-xs sm:text-sm text-slate-200 mt-2">Select the solutions you need for an instant transparent estimate.</p>
+              <p className="text-xs sm:text-sm text-slate-200 mt-1.5">Select the solutions you need for an instant transparent estimate.</p>
             </div>
 
             <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-slate-900/90 border border-purple-500/40 text-center relative overflow-hidden shadow-2xl shadow-purple-950/40">
@@ -707,12 +715,12 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`py-16 sm:py-24 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
+          className={`py-12 sm:py-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-10 sm:mb-14">
+            <div className="text-center mb-8 sm:mb-12">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Common Questions</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2">Frequently Asked Questions</h2>
             </div>
@@ -748,14 +756,14 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`py-16 sm:py-24 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-24 content-auto transition-all duration-700 ${
+          className={`py-12 sm:py-16 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-stretch">
-              {/* Left Column: Direct Contact Info Box */}
-              <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 flex flex-col justify-between shadow-xl">
+              {/* Left Column: Direct Contact Info Box (order-2 on mobile, order-1 on desktop) */}
+              <div className="order-2 md:order-1 p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 flex flex-col justify-between shadow-xl">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Ready to Grow Your Business?</span>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-2 mb-3 sm:mb-4">Let's Build Something Great Together.</h2>
@@ -803,8 +811,8 @@ export default function AAEnterpriseTechHomePage() {
                 </div>
               </div>
 
-              {/* Right Column: Contact Inquiry Form or Dedicated Success Card */}
-              <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 flex flex-col justify-between shadow-xl min-h-[440px]">
+              {/* Right Column: Contact Inquiry Form (order-1 on mobile, order-2 on desktop) */}
+              <div id="inquiry-form" className="order-1 md:order-2 p-6 sm:p-8 rounded-2xl sm:rounded-3xl glass-panel border border-slate-800 flex flex-col justify-between shadow-xl min-h-[440px]">
                 {formSubmitted ? (
                   <div className="my-auto py-8 px-4 text-center flex flex-col items-center justify-center space-y-4 animate-in zoom-in-95 duration-300">
                     <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center shadow-lg shadow-emerald-500/20">
