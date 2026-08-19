@@ -30,17 +30,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo.png?v=8', type: 'image/png', sizes: '512x512' },
-      { url: '/favicon.png?v=8', type: 'image/png', sizes: '512x512' },
-      { url: '/favicon.ico?v=8', sizes: 'any' },
+      { url: '/favicon.svg?v=10', type: 'image/svg+xml' },
+      { url: '/favicon.png?v=10', type: 'image/png', sizes: '512x512' },
+      { url: '/favicon.ico?v=10', sizes: 'any' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png?v=8', sizes: '180x180', type: 'image/png' },
-      { url: '/logo.png?v=8', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png?v=10', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon.svg?v=10', sizes: '180x180', type: 'image/svg+xml' },
     ],
-    shortcut: '/logo.png?v=8',
+    shortcut: '/favicon.svg?v=10',
   },
-  manifest: '/site.webmanifest?v=8',
+  manifest: '/site.webmanifest?v=10',
   alternates: {
     canonical: 'https://aaenterprisetech.com',
   },
