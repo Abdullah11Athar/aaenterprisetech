@@ -498,12 +498,12 @@ export default function AAEnterpriseTechHomePage() {
         {/* Services Showcase */}
         <section
           id="services"
-          className={`pt-4 sm:pt-6 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 transition-all duration-700 ${
+          className={`w-full md:min-h-[calc(100vh-72px)] flex flex-col justify-center py-12 md:py-0 px-4 sm:px-6 relative z-10 scroll-mt-20 transition-all duration-700 ${
             highlightedSection === 'services' ? 'section-highlight' : ''
           }`}
         >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Our Expertise</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Comprehensive Digital Solutions</h2>
               <p className="text-xs sm:text-sm text-slate-200 mt-1">Tailored services engineered to deliver real-world business results.</p>
@@ -545,12 +545,12 @@ export default function AAEnterpriseTechHomePage() {
         {/* 4-Step Process Section */}
         <section
           id="process"
-          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`w-full md:min-h-[calc(100vh-72px)] flex flex-col justify-center py-12 md:py-0 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'process' ? 'section-highlight' : ''
           }`}
         >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Streamlined Workflow</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">How We Bring Your Vision To Life</h2>
               <p className="text-xs sm:text-sm text-slate-200 mt-1">A transparent, agile process designed for rapid execution and flawless delivery.</p>
@@ -579,12 +579,12 @@ export default function AAEnterpriseTechHomePage() {
         {/* Why Choose Us */}
         <section
           id="why-us"
-          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`w-full md:min-h-[calc(100vh-72px)] flex flex-col justify-center py-12 md:py-0 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'why-us' ? 'section-highlight' : ''
           }`}
         >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Our Commitments</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Why Choose AA Enterprise Tech?</h2>
             </div>
@@ -656,12 +656,12 @@ export default function AAEnterpriseTechHomePage() {
         {/* Interactive Quote Estimator (Restored Screenshot 2 View) */}
         <section
           id="calculator"
-          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`w-full md:min-h-[calc(100vh-72px)] flex flex-col justify-center py-12 md:py-0 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'calculator' ? 'section-highlight' : ''
           }`}
         >
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-5 sm:mb-6">
+          <div className="max-w-4xl mx-auto w-full">
+            <div className="text-center mb-6 sm:mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Instant Estimator</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Transparent Project Pricing</h2>
               <p className="text-xs sm:text-sm text-slate-200 mt-1">Select the solutions you need for an instant transparent estimate.</p>
@@ -716,12 +716,12 @@ export default function AAEnterpriseTechHomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className={`pt-5 sm:pt-7 pb-12 sm:pb-16 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`w-full md:min-h-[calc(100vh-72px)] flex flex-col justify-center py-12 md:py-0 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'faq' ? 'section-highlight' : ''
           }`}
         >
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-5 sm:mb-6">
+          <div className="max-w-3xl mx-auto w-full">
+            <div className="text-center mb-6 sm:mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-300">Common Questions</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mt-1">Frequently Asked Questions</h2>
             </div>
@@ -757,7 +757,7 @@ export default function AAEnterpriseTechHomePage() {
         {/* Contact Section */}
         <section
           id="contact"
-          className={`pt-5 sm:pt-8 pb-16 sm:py-20 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
+          className={`w-full md:min-h-[calc(100vh-72px)] flex flex-col justify-center py-16 md:py-0 bg-slate-950 px-4 sm:px-6 relative z-10 scroll-mt-20 content-auto transition-all duration-700 ${
             highlightedSection === 'contact' ? 'section-highlight' : ''
           }`}
         >
