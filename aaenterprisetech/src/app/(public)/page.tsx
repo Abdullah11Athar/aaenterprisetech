@@ -10,8 +10,7 @@ import {
 } from 'lucide-react';
 
 export default function AAEnterpriseTechHomePage() {
-  const [selectedServices, setSelectedServices] = useState<string[]>(['web_dev', 'ai_auto']);
-  const [estimatedTotal, setEstimatedTotal] = useState(2000);
+  const [selectedServices, setSelectedServices] = useState<string[]>(['ai_lead_gen', 'ai_voice_agent']);
   
   // Contact Form State
   const [formData, setFormData] = useState({ fullName: '', email: '', message: '' });
@@ -172,44 +171,48 @@ export default function AAEnterpriseTechHomePage() {
 
   const servicesList = [
     {
-      id: 'web_dev',
-      category: 'Website Development',
-      name: 'Custom High-Performance Websites & Web Apps',
-      desc: 'Next.js 14, React & Tailwind CSS web apps built for lightning speed and maximum lead conversion.',
-      price: 800,
+      id: 'ai_lead_gen',
+      category: 'AI Lead Generation',
+      name: 'Automated Outreach & Lead Acquisition',
+      desc: 'Deploy autonomous AI agents that scrape leads, draft personalized emails, and book clients 24/7.',
+      minPrice: 800,
+      maxPrice: 1500,
       icon: Globe,
       color: 'from-blue-500/20 to-indigo-500/10',
       border: 'hover:border-blue-500/60',
       glow: 'group-hover:shadow-blue-500/20'
     },
     {
-      id: 'ai_auto',
-      category: 'AI Automation & Chatbots',
-      name: 'Autonomous AI Workflows & Intelligent Agents',
-      desc: 'Save 20+ hours weekly with customized n8n workflows, CRM automations, and conversational GPT chatbots.',
-      price: 1200,
+      id: 'ai_voice_agent',
+      category: 'AI Voice Agent',
+      name: 'Intelligent Voice Assistant & Call Automation',
+      desc: 'Real-time AI voice systems designed to handle support calls, qualify inbound leads, and make outbound dials.',
+      minPrice: 1200,
+      maxPrice: 2500,
       icon: Bot,
       color: 'from-purple-500/20 to-pink-500/10',
       border: 'hover:border-purple-500/60',
       glow: 'group-hover:shadow-purple-500/20'
     },
     {
-      id: 'branding',
-      category: 'Design & UI/UX Branding',
-      name: 'Modern Logo, Vector Identity & Figma Systems',
-      desc: 'World-class brand guidelines, bespoke vector logos, UI/UX systems, and high-impact pitch decks.',
-      price: 500,
+      id: 'ai_consultation',
+      category: 'AI Consultation + Implementation',
+      name: 'Strategy, Architecture & Setup Planning',
+      desc: 'Custom blueprinting for your business workflows, tech stack planning, and seamless model selection.',
+      minPrice: 500,
+      maxPrice: 1200,
       icon: Palette,
       color: 'from-pink-500/20 to-rose-500/10',
       border: 'hover:border-pink-500/60',
       glow: 'group-hover:shadow-pink-500/20'
     },
     {
-      id: 'it_consulting',
-      category: 'IT & Cloud Architecture',
-      name: 'Custom Software, API Integrations & Cloud Ops',
-      desc: 'Scalable cloud infrastructure, secure REST/GraphQL API development, Stripe payments, and ongoing maintenance.',
-      price: 900,
+      id: 'ai_agent_dev',
+      category: 'AI Agent Development',
+      name: 'Custom Cognitive Models & Integrations',
+      desc: 'Specialized LLM fine-tuning, RAG database integration, custom tools connection, and workflow deployment.',
+      minPrice: 1500,
+      maxPrice: 3500,
       icon: Briefcase,
       color: 'from-emerald-500/20 to-teal-500/10',
       border: 'hover:border-emerald-500/60',
@@ -242,16 +245,23 @@ export default function AAEnterpriseTechHomePage() {
       a: 'You can use our interactive Quote Estimator on this page or submit an inquiry below. Our team analyzes your requirements and provides a fixed-price proposal within 24 hours.'
     }
   ];
-
-  const toggleService = (id: string, price: number) => {
+  const toggleService = (id: string) => {
     if (selectedServices.includes(id)) {
       setSelectedServices(selectedServices.filter((s) => s !== id));
-      setEstimatedTotal(estimatedTotal - price);
     } else {
       setSelectedServices([...selectedServices, id]);
-      setEstimatedTotal(estimatedTotal + price);
     }
   };
+
+  const estimatedMin = selectedServices.reduce((acc, id) => {
+    const svc = servicesList.find((s) => s.id === id);
+    return acc + (svc ? svc.minPrice : 0);
+  }, 0);
+
+  const estimatedMax = selectedServices.reduce((acc, id) => {
+    const svc = servicesList.find((s) => s.id === id);
+    return acc + (svc ? svc.maxPrice : 0);
+  }, 0);
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-slate-100 selection:bg-purple-500 selection:text-white antialiased overflow-x-hidden relative">
@@ -526,7 +536,7 @@ export default function AAEnterpriseTechHomePage() {
                       <p className="text-xs text-slate-200 leading-relaxed mb-4">{svc.desc}</p>
                     </div>
                     <div className="pt-3.5 border-t border-slate-800/80 flex items-center justify-between">
-                      <span className="text-xs font-bold text-purple-300">From ${svc.price} USD</span>
+                      <span className="text-xs font-bold text-purple-300">${svc.minPrice} - ${svc.maxPrice} USD</span>
                       <a
                         href="#contact"
                         onClick={(e) => scrollToSection(e, 'contact')}
@@ -674,7 +684,7 @@ export default function AAEnterpriseTechHomePage() {
                   return (
                     <div
                       key={svc.id}
-                      onClick={() => toggleService(svc.id, svc.price)}
+                      onClick={() => toggleService(svc.id)}
                       className={`p-4 sm:p-4.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between select-none ${
                         isChecked
                           ? 'bg-purple-950/80 border-purple-400 text-white shadow-md shadow-purple-500/20 scale-[1.01]'
@@ -686,7 +696,7 @@ export default function AAEnterpriseTechHomePage() {
                         <div className="text-[10px] sm:text-xs text-purple-300 font-semibold mt-0.5">{svc.category}</div>
                       </div>
                       <div className="text-xs sm:text-sm font-black text-purple-300 shrink-0 ml-3">
-                        +${svc.price}
+                        ${svc.minPrice} - $${svc.maxPrice}
                       </div>
                     </div>
                   );
@@ -697,7 +707,7 @@ export default function AAEnterpriseTechHomePage() {
                 <div>
                   <div className="text-xs text-slate-300 font-medium">Estimated Total Investment</div>
                   <div className="text-2xl sm:text-3xl font-black text-white mt-0.5">
-                    ${estimatedTotal.toLocaleString()}{' '}
+                    ${estimatedMin.toLocaleString()} - ${estimatedMax.toLocaleString()}{' '}
                     <span className="text-xs font-normal text-slate-400">USD</span>
                   </div>
                 </div>
@@ -706,7 +716,7 @@ export default function AAEnterpriseTechHomePage() {
                   onClick={(e) => scrollToSection(e, 'contact')}
                   className="w-full sm:w-auto px-8 py-3 rounded-xl shimmer-button text-white font-bold text-xs sm:text-sm shadow-xl shadow-purple-600/30 text-center hover:scale-[1.02] transition-all"
                 >
-                  Lock In This Rate & Inquire
+                  Book a Free Discovery Call
                 </a>
               </div>
             </div>
