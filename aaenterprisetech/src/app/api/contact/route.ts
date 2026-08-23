@@ -94,7 +94,7 @@ Received via https://aaenterprisetech.com`,
     // 3. If Resend API Key is provided
     if (process.env.RESEND_API_KEY) {
       try {
-        await fetch('https://api.resend.com/emails', {
+        const resendResponse = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -102,6 +102,28 @@ Received via https://aaenterprisetech.com`,
           },
           body: JSON.stringify(payload),
         });
+
+        if (!resendResponse.ok) {
+          const errorData = await resendResponse.json().catch(() => ({}));
+          console.warn('Resend custom domain send failed, trying onboarding@resend.dev fallback...', errorData);
+
+          const fallbackPayload = {
+            to: ['abdullah.jet444@gmail.com'],
+            from: 'onboarding@resend.dev',
+            subject: `🚀 [Fallback] New Lead from ${name} - AA Enterprise Tech`,
+            text: payload.text,
+            html: payload.html
+          };
+
+          await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+            },
+            body: JSON.stringify(fallbackPayload),
+          });
+        }
       } catch (err) {
         console.error('Resend dispatch error:', err);
       }
